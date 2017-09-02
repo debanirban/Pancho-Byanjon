@@ -1,0 +1,27 @@
+Hello,
+
+Thank you for purchasing Internet Download Manager. Please save this information as a record of your purchase.
+
+Your personal Serial Number (S/N):
+vzxz3-kumna-d6f5h-Lfcdx
+
+You can click on your personal link to automatically call IDM registration dialog with your Serial Number:
+http://www.internetdownloadmanager.com/fillregform.html?d=cz12enh6My1rdW1uYS1kNmY1aC1MZmNkeDtlPWRlYi5hbmlyYmFuQGdtYWlsLmNvbTtmPUFuaXJiYW47bD1EZWI7AA==
+
+Note that if you have an OLD version of IDM (5.xx and earlier) installed, please download the full-featured version of IDM at first from the following location:
+https://secure.internetdownloadmanager.com/get.html?vzxz3-kumna-d6f5h-Lfcdx
+
+In the future you may use this link to get your download link and Serial Number automatically:
+http://www.internetdownloadmanager.com/retrieve_registration.html
+
+Please use the following link in order to get your invoice:
+http://www.internetdownloadmanager.com/invoice.html?order_id=33611-36286053509
+
+Get back to me if you encounter any problems.
+
+Best regards,
+
+IDM Sales
+Tonec Inc.
+16835 Algonquin Street #400
+Huntington Beach, CA, 92649
