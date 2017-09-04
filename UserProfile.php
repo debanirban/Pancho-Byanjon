@@ -1023,6 +1023,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 					<span style="float: left;margin-left: 15px;"><i id="save_complaint" class="fa fa-save fa-fw w3-margin-right" title="Save your complaint" style="cursor: pointer; color: rgb(0, 0, 0);" onmouseover="ChangeColor('save_complaint', 'blue');" onmouseout="ChangeColor('save_complaint', 'black');"></i><i id="cancel_complaint" class="fa fa-times fa-fw w3-margin-right" title="Cancel your complaint" style="cursor: pointer; color: rgb(0, 0, 0);" onmouseover="ChangeColor('cancel_complaint', 'red');" onmouseout="ChangeColor('cancel_complaint', 'black');"></i></span>
 				</div>
 			</div>
+			
+			<div style="display: none;" id="complaint_box_non_edit">
+				<div style="padding-top: 60px;margin-left: -20px;/* height: 0px; */width: 100%;/* text-align: center; */" class="col-xs-6" id="compaint_box_details_subj_non_edit">
+					<label class="col-xs-12" style="border-radius: 5px;font-size:10px;margin-left: -21px;">Complaint Subject</label>
+					<label type="text" style="width: 170px;margin: 0px;border-radius: px;font-size:12px;margin-left: 15px;" id="compaint_box_subject_text_non_edit"></label>
+				</div>
+				<div style="padding-top: 40px;margin-left: -20px;height: 200px;width: 100%;" class="col-xs-6" id="compaint_box_details_desc_non_edit">
+					<label class="col-xs-12" style="border-radius: 5px;font-size:10px;margin-left: -21px;">Complaint Details</label>
+					<label style="height: 108px;width: 170px;margin: 0px;border-radius: 5px;font-size:12px;resize: none;margin-left: 15px;" cols="22" rows="5" id="compaint_box_details_text_non_edit"></label>
+					<span style="float: left;margin-left: 15px;"><i id="cancel_complaint_non_edit" class="fa fa-times fa-fw w3-margin-right" title="Close" style="cursor: pointer; color: rgb(0, 0, 0);" onmouseover="ChangeColor('cancel_complaint_non_edit', 'red');" onmouseout="ChangeColor('cancel_complaint_non_edit', 'black');"></i></span>
+				</div>
+			</div>
         </div>
       </div>
       
@@ -1073,6 +1085,7 @@ $('#make_complain_box' ).click(function () {
 	if ( $("#complaint_box_edit" ).is( ":hidden" ) ) {
 		$("#complaint_box_edit" ).slideDown( "slow" );
 		$("#complaint_box_edit" ).show();
+		$("#complaint_box_non_edit" ).hide();
 	  } 
 });
 
@@ -1170,11 +1183,11 @@ function GetComplaints()
 						  {
 							  if(res[i]["ComplainSubject"].length > 20)
 							  {
-								  html = html + "<p id=" + res[i]["ComplainId"] + " style='color: blue; text-align: left; cursor: pointer; text-decoration: none;''>" + res[i]["ComplainSubject"].substr(0, 19) + "..." + "</p>";
+								  html = html + "<p id=" + res[i]["ComplainId"] + " style='color: blue; text-align: left; cursor: pointer; text-decoration: none;' onclick='ShowUserComplains(" + '"' + res[i]["ComplainSubject"] + '"' + "," + '"' + res[i]["ComplainDesc"] + '"' + ")" + "'" + ">" + res[i]["ComplainSubject"].substr(0, 19) + "..." + "</p>";
 							  }
 							  else
 							  {
-								html = html + "<p id=" + res[i]["ComplainId"] + " style='color: blue; text-align: left; cursor: pointer; text-decoration: none;'>" + res[i]["ComplainSubject"] + "</p>";
+								html = html + "<p id=" + res[i]["ComplainId"] + " style='color: blue; text-align: left; cursor: pointer; text-decoration: none;' onclick='ShowUserComplains(" + '"' + res[i]["ComplainSubject"] + '"' + "," + '"' + res[i]["ComplainDesc"] + '"' + ")" + "'" + ">" + res[i]["ComplainSubject"] + "</p>";
 							  }
 						  }
 					  }
@@ -1182,6 +1195,22 @@ function GetComplaints()
 				  }
 		}
 	});
+}
+
+function ShowUserComplains($sub, $des)
+{
+	if ( $("#complaint_box_non_edit" ).is( ":hidden" ) ) {
+		$("#complaint_box_edit" ).hide();
+		$("#complaint_box_non_edit" ).slideDown( "slow" );
+		$("#complaint_box_non_edit" ).show();
+		$('#compaint_box_subject_text_non_edit').html($sub);
+		$('#compaint_box_details_text_non_edit').html($des);
+	  }
+	  else
+	  {
+		$('#compaint_box_subject_text_non_edit').html($sub);
+		$('#compaint_box_details_text_non_edit').html($des);
+	  }
 }
 
 function ShowComplainLoader()
@@ -1278,6 +1307,18 @@ $('#save_complaint' ).click(function () {
 			$("#complaint_box_edit" ).slideUp("slow");
 		  }
 	}
+});
+
+
+$('#cancel_complaint_non_edit' ).click(function () {
+	if ( $("#complaint_box_non_edit" ).is( ":hidden" ) ) {
+		$("#complaint_box_non_edit" ).slideDown( "slow" );
+		$("#complaint_box_non_edit" ).show();
+	  } else {
+		$("#complaint_box_non_edit" ).slideUp("slow");
+		$('#compaint_box_subject_text_non_edit').val('');
+		$('#compaint_box_details_text_non_edit').val('');
+	  }
 });
 
 $('#cancel_complaint' ).click(function () {
@@ -3653,4 +3694,4 @@ $(document).click(function() {
 </div>
 
 </body>
-</html> 
+</html>
