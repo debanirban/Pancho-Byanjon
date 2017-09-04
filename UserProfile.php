@@ -3598,7 +3598,7 @@ function CloseAllOrders()
 
 function Contact_CustomerService($orderid, e)
 {
-	$('#order_contact_care').css({'top':e.pageY-50,'left':e.pageX - 200, 'position':'absolute', 'border':'1px solid black', 'padding':'5px', 'z-index': '96', 'background-color': 'rgba(146, 150, 154, 0.87)', 'width': '255px', 'box-shadow':'4px 2px 0px rgba(35, 32, 32, 0.68)', 'height': '115px', 'display':'block'});
+	$('#order_contact_care').css({'top':e.pageY-50,'left':e.pageX - 200, 'position':'absolute', 'border':'1px solid black', 'padding':'5px', 'z-index': '116', 'background-color': 'rgba(146, 150, 154, 0.87)', 'width': '255px', 'box-shadow':'4px 2px 0px rgba(35, 32, 32, 0.68)', 'height': '115px', 'display':'block'});
     
 	$('#order_contact_care_span').html("<div>To get updates for your Order No: <strong>" + $orderid + "</strong> please contact our Customer Care @ 9836667269</div>");
 	
@@ -3619,7 +3619,7 @@ function Track_Order($order_id, e)
 				//$('#order_status_box_span').show();
 				
 				//$("#contact_loader_div").show('slide', 1000);
-				$('#order_status_box').css({'top':e.pageY-50,'left':e.pageX - 100, 'position':'absolute', 'border':'1px solid black', 'padding':'5px', 'z-index': '95', 'background-color': 'rgba(146, 150, 154, 0.87)', 'width': '255px', 'box-shadow':'4px 2px 0px rgba(35, 32, 32, 0.68)'});
+				$('#order_status_box').css({'top':e.pageY-50,'left':e.pageX - 100, 'position':'absolute', 'border':'1px solid black', 'padding':'5px', 'z-index': '115', 'background-color': 'rgba(146, 150, 154, 0.87)', 'width': '255px', 'box-shadow':'4px 2px 0px rgba(35, 32, 32, 0.68)'});
     
 				$('#order_status_box_span').html("<div class='col-lg-12'>Your Order No: <strong>" + $order_id + "</strong> is <strong>" + res[0]["CustomerOrderStatus"] + "</strong></div>");
 				//$('#contact_order_status_img').attr('src', res[0]["Customer_Order_Status_Image"]);
@@ -3638,7 +3638,7 @@ $(document).click(function() {
 });*/
 </script>
 
-<div class='overlay' style="display:none; background: rgba(8, 8, 8, 0.92);" id="cartitemcontainer">
+<div class='overlay' style="display:none; background: rgba(8, 8, 8, 0.92); z-index: 110;" id="cartitemcontainer">
 	<div id="cartitemsdiv" style="width: 80%;/* height: auto; */color: beige;/* position: absolute; */padding: 10px;margin-top: 5%;margin-left: 10%;background-color: darkgray;/* height: 500px; */max-height: 500px;overflow-x: hidden;box-shadow: 3px 4px 4px 1px #3e3939;border-radius: 5px;"></div>
 </div>
 
