@@ -1026,14 +1026,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 			
 			<div style="display: none;" id="complaint_box_non_edit">
 				<div style="padding-top: 60px;margin-left: -20px;/* height: 0px; */width: 100%;/* text-align: center; */" class="col-xs-6" id="compaint_box_details_subj_non_edit">
-					<label class="col-xs-12" style="border-radius: 5px;font-size:10px;margin-left: -21px;">Complaint Subject</label>
-					<label type="text" style="width: 170px;margin: 0px;border-radius: px;font-size:12px;margin-left: 15px;" id="compaint_box_subject_text_non_edit"></label>
+					<label class="col-xs-12" style="border-radius: 5px;font-size:10px; text-align: left;">Complaint Subject:</label>
+					<label type="text" style="width: 170px;margin: 0px;border-radius: px;font-size:12px;margin-left: 15px; text-align: left;" id="compaint_box_subject_text_non_edit"></label>
 				</div>
-				<div style="padding-top: 40px;margin-left: -20px;height: 200px;width: 100%;" class="col-xs-6" id="compaint_box_details_desc_non_edit">
-					<label class="col-xs-12" style="border-radius: 5px;font-size:10px;margin-left: -21px;">Complaint Details</label>
-					<label style="height: 108px;width: 170px;margin: 0px;border-radius: 5px;font-size:12px;resize: none;margin-left: 15px;" cols="22" rows="5" id="compaint_box_details_text_non_edit"></label>
-					<span style="float: left;margin-left: 15px;"><i id="cancel_complaint_non_edit" class="fa fa-times fa-fw w3-margin-right" title="Close" style="cursor: pointer; color: rgb(0, 0, 0);" onmouseover="ChangeColor('cancel_complaint_non_edit', 'red');" onmouseout="ChangeColor('cancel_complaint_non_edit', 'black');"></i></span>
+				<div style="padding-top: 40px;margin-left: -20px;height: auto;width: 220px; overflow-y: scroll; overflow-x: hidden; overflow-x: hidden; overflow: auto; max-height: 150px;" class="col-xs-6" id="compaint_box_details_desc_non_edit">
+					<label class="col-xs-12" style="border-radius: 5px;font-size:10px; text-align: left;">Complaint Details:</label>
+					<label style="height: auto;width: 170px;margin: 0px;border-radius: 5px;font-size:12px;resize: none;margin-left: 15px; text-align: left;" cols="22" rows="5" id="compaint_box_details_text_non_edit"></label>
 				</div>
+				<div style="margin-left: 25px;"><i id="cancel_complaint_non_edit" class="fa fa-times fa-fw w3-margin-right" title="Close" style="cursor: pointer; color: rgb(0, 0, 0); padding-top: 50px;" onmouseover="ChangeColor('cancel_complaint_non_edit', 'red');" onmouseout="ChangeColor('cancel_complaint_non_edit', 'black');"></i></div>
 			</div>
         </div>
       </div>
@@ -3694,4 +3694,4 @@ $(document).click(function() {
 </div>
 
 </body>
-</html>
+</html> 
