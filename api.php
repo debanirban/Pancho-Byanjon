@@ -1469,7 +1469,8 @@
 		 $con->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		  $sql = "SELECT * from homedelivery.user_complains 
-					WHERE UserId = '". $userid. "'";
+					WHERE UserId = '". $userid. "'
+					order by ComplainId desc";
 			  
 		  $q = $con->query($sql);
 		  //$row_count = $q->rowCount();
