@@ -1506,7 +1506,7 @@ function GetOrdersAfterSearch($text_value)
 				 }
 				 else
 				 {
-					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
+					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + "," + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
 					 
 					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Contact Customer Service' onclick='ContactCustomerService(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
 					 
@@ -1611,7 +1611,7 @@ $(function() {
 							 }
 							 else
 							 {
-								 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
+								 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + "," + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
 								 
 								 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Contact Customer Service' onclick='ContactCustomerService(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
 								 
@@ -1971,9 +1971,19 @@ function SaveUserProfileImage()
 	  //HideProfileLoadingLoader();
 }
 
+function LoadUserCart()
+{
+	$('#load_cart').load('UserCart.php');
+}
+
 function OpenCartDiv()
 {
+	//$('#load_cart').load('UserCart.php');
+	//
+	//alert($('#user_cart_main_container').html());
 	  $('#user_cart_main_container').css('display', 'inline');
+	  //$('#user_cart_main_container').css('width', '700px');
+	  //document.getElementById('user_cart_main_container').style.display = "inline";
 	  $('#load_cart').show();
 	  
 		  $("#load_page_div").show('slide', 1000); 
@@ -2501,7 +2511,7 @@ function GetCustomersOrders()
 				 }
 				 else
 				 {
-					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
+					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + "," + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
 					 
 					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Contact Customer Service' onclick='ContactCustomerService(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
 					 
@@ -2620,7 +2630,7 @@ function GetCustomersOrdersBySearch()
 				 }
 				 else
 				 {
-					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
+					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + "," + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
 					 
 					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Contact Customer Service' onclick='ContactCustomerService(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
 					 
@@ -2730,7 +2740,7 @@ function GetCustomersRecentOrders($order_id)
 				 }
 				 else
 				 {
-					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
+					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + "," + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
 					 
 					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Contact Customer Service' onclick='ContactCustomerService(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
 					 
@@ -3439,8 +3449,16 @@ function order_search_box_hide()
 
 setInterval(function() {
     GetDealsInformation();
+	//LoadUserCart();
 	//GetUserFavs();
 }, 60 * 1000);
+
+/*setInterval(function() {
+	LoadUserCart();
+	$('#user_cart_main_container').css('display', 'inline');
+	//GetUserFavs();
+}, 20 * 1000);*/
+
 
 function GetDealsInformation()
 {
@@ -3493,11 +3511,11 @@ function HideContactDiv()
 }
 
 
-function TrackOrder($order_id)
+function TrackOrder($order_id, $id)
 {
 	$userid = $('#profile_userdiv').html();
 	$.ajax({ url: 'api.php',
-         data: {function2call: 'GetCustomersRecentOrders', userid: $userid, order_id: $order_id},
+         data: {function2call: 'TrackCustomersRecentOrders', userid: $userid, order_id: $order_id, id: $id},
          type: 'post',
 		 //dataType: 'json',
          success: function(output) {
@@ -3548,11 +3566,12 @@ function GetCustomersAllOrders()
 			 var interests_html = "";
 			 $ordid = "";
 			 
-			 html = html + "<div class='col-lg-12' style='height: 80px; width: 100%;'><h3 style='text-shadow: 3px 3px 2px #423636;'>My Orders</h3><span class='pull-right' style='position: relative;margin-right: -10px; margin-top: -35px;'><i class='fa fa-window-close' id='close_all_orders' style='cursor: pointer; text-shadow: 3px 3px 2px #423636;' onclick='CloseAllOrders()'></i></span><hr class='w3-clear' style='border-top: 1px solid #464242;margin-left: -25px;margin-right: -25px;'></div>";
+			 html = html + "<div class='col-lg-12' style='height: 90px;width: 1081px;background: rgb(84, 79, 79);border-top-left-radius: 5px;/* border-bottom-left-radius: 5px; */border-top-right-radius: 5px;margin-left: -9px;margin-top: -9px;position: fixed;z-index: 120; text-shadow: 2px 2px 2px #c7c1c1;'><h3>My Orders</h3><span class='pull-right' style='position: relative;margin-right: 20px; margin-top: -35px;'><i class='fa fa-window-close' id='close_all_orders' style='cursor: pointer; text-shadow: 2px 2px 2px #928f8f;' onclick='CloseAllOrders()'></i></span></div>";
 			 
-			 html = html + "<div class='row' style='text-shadow: 1px 1px 2px #423636;'><div class='col-lg-2'>Order Date</div><div class='col-lg-2'>Order Id</div><div class='col-lg-2'>Item</div><div class='col-lg-2'>Quantity</div><div class='col-lg-2' style='text-align: left;'>Item Value</div><div class='col-lg-2' style='text-align: center;'>Actions</div></div>";
+			 html = html + "<div class='row' style='text-shadow: 3px 3px 2px #989090;margin-top: 80px;position: fixed;width: 1081px;background: rgb(84, 79, 79);margin-left: -9px;z-index: 119;height: 40px;/* box-shadow: 1px 3px 5px 0px #989090; */'><div class='col-lg-2'>Order Date</div><div class='col-lg-2'>Order Id</div><div class='col-lg-2'>Item</div><div class='col-lg-2'>Quantity</div><div class='col-lg-2' style='text-align: left;'>Item Value</div><div class='col-lg-2' style='text-align: center;'>Actions</div></div>";
 				 
-			html = html + "<hr class='w3-clear' style='border-top: 1px solid #464242;'>";
+			/*html = html + "<hr class='w3-clear' style='border-top: 1px solid #464242;'>";*/
+			html = html + "<div style='margin-top: 150px;'>";
 			
 			var actionshtml = "";
 			var actionsdwnhtml = "";
@@ -3593,17 +3612,17 @@ function GetCustomersAllOrders()
 				 }
 				 if(res[i]["Delivered"] == "Y")
 				 {
-					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#160bad"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Reorder' onclick='Reorder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-send' id=" + reorder + "></i></div>";
+					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#160bad"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer; text-align: center;' title='Reorder' onclick='Reorder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-send' id=" + reorder + "></i></div>";
 					 
-					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#160bad"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Download Invoice' onclick='DownloadInvoice(" + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-download' id=" + invoice + "></i></div>";
+					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#160bad"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer; text-align: center;' title='Download Invoice' onclick='DownloadInvoice(" + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-download' id=" + invoice + "></i></div>";
 					 
 					 styleColor = "style='color:#160bad'";
 				 }
 				 else
 				 {
-					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b10a2f"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='Track_Order(" + '"' + res[i]["OrderId"] + '"' + ",event)" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
+					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b10a2f"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer; text-align: center;' title='Track your order' onclick='Track_Order(" + '"' + res[i]["OrderId"] + '"' + "," + '"' + res[i]["Id"] + '"' + ",event)" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
 					 
-					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#b10a2f"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Contact Customer Service' onclick='Contact_CustomerService(" + '"' + res[i]["OrderId"] + '"' + ",event)" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
+					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#b10a2f"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer; text-align: center;' title='Contact Customer Service' onclick='Contact_CustomerService(" + '"' + res[i]["OrderId"] + '"' + ",event)" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
 					 
 					 styleColor = "style='color:#b10a2f'";
 				 }
@@ -3615,8 +3634,8 @@ function GetCustomersAllOrders()
 				 custOrderDate = res[i]["CustomerOrderDate"];
 				 
 			 }
-			 
-			 //html = html + "<hr class='w3-clear' style='border-top: 1px solid #337ab7;'>";
+			 html = html + '</div>';
+			 //html = html + "<hr class='w3-clear' stylargin-top: 150px;e='border-top: 1px solid #337ab7;'>";
 			 
 			 $('#cartitemsdiv').html(html);
 			 //$('#recentorders').html(interests_html);
@@ -3646,11 +3665,11 @@ function Contact_CustomerService($orderid, e)
 	$('#order_contact_care').show();
 }
 
-function Track_Order($order_id, e)
+function Track_Order($order_id, $id, e)
 {
 	$userid = $('#profile_userdiv').html();
 	$.ajax({ url: 'api.php',
-         data: {function2call: 'GetCustomersRecentOrders', userid: $userid, order_id: $order_id},
+         data: {function2call: 'TrackCustomersRecentOrders', userid: $userid, order_id: $order_id, id: $id},
          type: 'post',
 		 //dataType: 'json',
          success: function(output) {
@@ -3679,8 +3698,8 @@ $(document).click(function() {
 });*/
 </script>
 
-<div class='overlay' style="display:none; background: rgba(8, 8, 8, 0.92); z-index: 110;" id="cartitemcontainer">
-	<div id="cartitemsdiv" style="width: 80%;/* height: auto; */color: beige;/* position: absolute; */padding: 10px;margin-top: 5%;margin-left: 10%;background-color: darkgray;/* height: 500px; */max-height: 500px;overflow-x: hidden;box-shadow: 3px 4px 4px 1px #3e3939;border-radius: 5px;"></div>
+<div class='overlay' style="display:none; background: rgb(8, 8, 8); z-index: 110;" id="cartitemcontainer">
+	<div id="cartitemsdiv" style="width: 80%;/* height: auto; */color: beige;/* position: absolute; */padding: 10px;margin-top: 5%;margin-left: 10%;background-color: rgba(117, 110, 110, 0);/* height: 500px; */max-height: 500px;overflow-x: hidden;box-shadow: 3px 4px 4px 1px #3e3939;border-radius: 5px; border: 1px solid;"></div>
 </div>
 
 <div class="box_status" id="order_status_box" style="display: none;">
@@ -3694,4 +3713,4 @@ $(document).click(function() {
 </div>
 
 </body>
-</html> 
+</html>
