@@ -540,49 +540,32 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card-2 w3-round">
         <div class="w3-white">
           <!--<button onclick="myFunction('Demo1')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-heart fa-fw w3-margin-right"></i> <span id="my_fav">My Favourites</span></button>-->
-		  <button onclick="$('#search').val(''); GetUserFavs(); GetDetails('my_fav'); order_search_box_hide(); ShowDivDetails('show_user_favs', 'show_my_addresses', 'change_ps_div', 'show_my_ratings', 'show_my_reviews', 'new_address_container', 'show_user_orders'); $('#midcontainerdiv').css('margin-left', '10%'); $('#midcontainerdiv').css('width', '60%'); $('#show_user_addresses').hide(); $('#rowaddresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('heartid', 'red');" onmouseout="ChangeColor('heartid', 'white');"><i id="heartid" class="fa fa-heart fa-fw w3-margin-right"></i> <span id="my_fav">My Favourites</span></button>
+		  <button onclick="$('#search').val(''); $('#auto_comp_text').html(''); GetUserFavs(); GetDetails('my_fav'); order_search_box_hide(); ShowDivDetails('show_user_favs', 'show_my_addresses', 'change_ps_div', 'show_my_ratings', 'show_my_reviews', 'new_address_container', 'show_user_orders'); $('#midcontainerdiv').css('margin-left', '10%'); $('#midcontainerdiv').css('width', '60%'); $('#show_user_addresses').hide(); $('#rowaddresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('heartid', 'red');" onmouseout="ChangeColor('heartid', 'white');"><i id="heartid" class="fa fa-heart fa-fw w3-margin-right"></i> <span id="my_fav">My Favourites</span></button>
           <div id="Demo1" class="w3-hide w3-container">
             <p>Some text..</p>
           </div>
           <!--<button onclick="myFunction('Demo2')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-shopping-bag fa-fw w3-margin-right"></i> <span id="my_orders">My Orders</span></button>-->
-		  <button onclick="$('#search').val(''); GetCustomersOrders(); order_search_box_show(); GetDetails('my_orders'); ShowDivDetails('show_user_orders', 'show_user_favs', 'show_my_addresses', 'change_ps_div', 'show_my_ratings', 'show_my_reviews', 'new_address_container'); $('#midcontainerdiv').css('margin-left', '30%'); $('#midcontainerdiv').css('margin-left', '0%'); $('#midcontainerdiv').css('width', '100%'); $('#show_user_addresses').hide(); $('#rowaddresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('shoppingid', '#178665');" onmouseout="ChangeColor('shoppingid', 'white');"><i id="shoppingid" class="fa fa-shopping-bag fa-fw w3-margin-right"></i> <span id="my_orders">My Orders</span></button>
+		  <button onclick="$('#search').val(''); $('#auto_comp_text').html(''); GetCustomersOrders(); order_search_box_show(); GetDetails('my_orders'); ShowDivDetails('show_user_orders', 'show_user_favs', 'show_my_addresses', 'change_ps_div', 'show_my_ratings', 'show_my_reviews', 'new_address_container'); $('#midcontainerdiv').css('margin-left', '30%'); $('#midcontainerdiv').css('margin-left', '0%'); $('#midcontainerdiv').css('width', '100%'); $('#show_user_addresses').hide(); $('#rowaddresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('shoppingid', '#178665');" onmouseout="ChangeColor('shoppingid', 'white');"><i id="shoppingid" class="fa fa-shopping-bag fa-fw w3-margin-right"></i> <span id="my_orders">My Orders</span></button>
           <div id="Demo2" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div>
           <!--<button onclick="myFunction('Demo3')" class="w3-button w3-block w3-theme-l1 w3-left-align"><i class="fa fa-address-card fa-fw w3-margin-right"></i> <span id="my_addresses">My Addresses</span></button>-->
-		  <button onclick="$('#search').val(''); GetDetails('my_addresses'); order_search_box_hide(); ShowDivDetails('show_my_addresses', 'change_ps_div', 'show_my_ratings', 'show_my_reviews', 'new_address_container', 'show_user_favs', 'show_user_orders'); $('#midcontainerdiv').css('margin-left', '30%'); $('#midcontainerdiv').css('margin-left', '0%'); $('#midcontainerdiv').css('width', '100%'); $('#show_user_addresses').show(); $('#rowaddresses').show(); $('#add_division').show();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('addressid', 'blue');" onmouseout="ChangeColor('addressid', 'white');"><i id="addressid" class="fa fa-address-card fa-fw w3-margin-right"></i> <span id="my_addresses">My Addresses</span></button>
+		  <button onclick="$('#search').val(''); $('#auto_comp_text').html(''); GetDetails('my_addresses'); order_search_box_hide(); ShowDivDetails('show_my_addresses', 'change_ps_div', 'show_my_ratings', 'show_my_reviews', 'new_address_container', 'show_user_favs', 'show_user_orders'); $('#midcontainerdiv').css('margin-left', '30%'); $('#midcontainerdiv').css('margin-left', '0%'); $('#midcontainerdiv').css('width', '100%'); $('#show_user_addresses').show(); $('#rowaddresses').show(); $('#add_division').show();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('addressid', 'blue');" onmouseout="ChangeColor('addressid', 'white');"><i id="addressid" class="fa fa-address-card fa-fw w3-margin-right"></i> <span id="my_addresses">My Addresses</span></button>
           <div id="Demo3" class="w3-hide w3-container">
          <div class="w3-row-padding">
          <br>
-           <div class="w3-half">
-             <img src="/w3images/lights.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/mountains.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/forest.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/nature.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
-           <div class="w3-half">
-             <img src="/w3images/fjords.jpg" style="width:100%" class="w3-margin-bottom">
-           </div>
+           
          </div>
           </div>
-		  <button onclick="$('#search').val(''); GetDetails('change_password'); order_search_box_hide(); ShowDivDetails('change_ps_div', 'show_my_ratings', 'show_my_reviews', 'show_my_addresses', 'new_address_container', 'show_user_favs', 'show_user_orders'); $('#midcontainerdiv').css('margin-left', '30%'); $('#midcontainerdiv').css('width', '60%'); $('#show_user_addresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('pswdid', 'orange');" onmouseout="ChangeColor('pswdid', 'white');"><i id="pswdid" class="fa fa-edit fa-fw w3-margin-right"></i> <span id="change_password">Change Password</span></button>
+		  <button onclick="$('#search').val(''); $('#auto_comp_text').html(''); GetDetails('change_password'); order_search_box_hide(); ShowDivDetails('change_ps_div', 'show_my_ratings', 'show_my_reviews', 'show_my_addresses', 'new_address_container', 'show_user_favs', 'show_user_orders'); $('#midcontainerdiv').css('margin-left', '30%'); $('#midcontainerdiv').css('width', '60%'); $('#show_user_addresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('pswdid', 'orange');" onmouseout="ChangeColor('pswdid', 'white');"><i id="pswdid" class="fa fa-edit fa-fw w3-margin-right"></i> <span id="change_password">Change Password</span></button>
           <div id="Demo4" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div>
-		  <button onclick="$('#search').val(''); GetDetails('my_ratings'); order_search_box_hide(); ShowDivDetails('show_my_ratings', 'change_ps_div', 'show_my_reviews', 'show_my_addresses', 'new_address_container', 'show_user_favs', 'show_user_orders'); ShowMyRatings(); $('#midcontainerdiv').css('margin-left', '10%'); $('#midcontainerdiv').css('width', '60%'); $('#show_user_addresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('ratingsid', '#d43dde');" onmouseout="ChangeColor('ratingsid', 'white');"><i id="ratingsid" class="fa fa-handshake-o fa-fw w3-margin-right"></i> <span id="my_ratings">My Ratings</span></button>
+		  <button onclick="$('#search').val(''); $('#auto_comp_text').html(''); GetDetails('my_ratings'); order_search_box_hide(); ShowDivDetails('show_my_ratings', 'change_ps_div', 'show_my_reviews', 'show_my_addresses', 'new_address_container', 'show_user_favs', 'show_user_orders'); ShowMyRatings(); $('#midcontainerdiv').css('margin-left', '10%'); $('#midcontainerdiv').css('width', '60%'); $('#show_user_addresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('ratingsid', '#d43dde');" onmouseout="ChangeColor('ratingsid', 'white');"><i id="ratingsid" class="fa fa-handshake-o fa-fw w3-margin-right"></i> <span id="my_ratings">My Ratings</span></button>
           <div id="Demo5" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div>
-		  <button onclick="$('#search').val(''); GetDetails('my_reviews'); order_search_box_hide(); ShowDivDetails('show_my_reviews','show_my_ratings', 'change_ps_div', 'show_my_addresses', 'new_address_container', 'show_user_favs', 'show_user_orders'); ShowMyReviews(); $('#midcontainerdiv').css('margin-left', '10%'); $('#midcontainerdiv').css('width', '60%'); $('#show_user_addresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('reviewsid', '#d4615f');" onmouseout="ChangeColor('reviewsid', 'white');"><i id="reviewsid" class="fa fa-thumbs-o-up fa-fw w3-margin-right"></i> <span id="my_reviews">My Reviews</span></button>
+		  <button onclick="$('#search').val(''); $('#auto_comp_text').html(''); GetDetails('my_reviews'); order_search_box_hide(); ShowDivDetails('show_my_reviews','show_my_ratings', 'change_ps_div', 'show_my_addresses', 'new_address_container', 'show_user_favs', 'show_user_orders'); ShowMyReviews(); $('#midcontainerdiv').css('margin-left', '10%'); $('#midcontainerdiv').css('width', '60%'); $('#show_user_addresses').hide(); $('#add_division').hide();" class="w3-button w3-block w3-theme-l1 w3-left-align" onmouseover="ChangeColor('reviewsid', '#d4615f');" onmouseout="ChangeColor('reviewsid', 'white');"><i id="reviewsid" class="fa fa-thumbs-o-up fa-fw w3-margin-right"></i> <span id="my_reviews">My Reviews</span></button>
           <div id="Demo6" class="w3-hide w3-container">
             <p>Some other text..</p>
           </div>
@@ -711,7 +694,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 		<div id="order_search_box" class="ui-widget pull-right" style="display: none; margin-right: 350px; margin-top: -15px;">
 		<!--<div id="searchbox" style="margin-top: -33px; position: absolute; height: 55px; width: 350px;">-->
 			<div id="search_box" style="margin-top: -25px; position: absolute; height: 55px; width: 350px; margin-left: 90px;">
-				<input id="search" type="text" placeholder="Search Orders" style="background-image: url('search.png'); background-size: contain; background-repeat: no-repeat; background-position: 10px; background-size: 25px 25px; text-indent: 35px;" class="ui-autocomplete-input" autocomplete="off">
+				<input id="search" type="text" onchange="$('#auto_comp_text').html($('#search').val());" placeholder="Search Orders" style="background-image: url('search.png'); background-size: contain; background-repeat: no-repeat; background-position: 10px; background-size: 25px 25px; text-indent: 35px;" class="ui-autocomplete-input" autocomplete="off">
 				<button id="submit" type="submit" value="Search"><i class="fa fa-search"></i></button>
 			</div>
 		<!--</div>-->
@@ -1085,6 +1068,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   <div id="customercareworktime" style="display:none;"></div>
   
   <div id="customercareworkdays" style="display:none;"></div>
+  
+  <div id="auto_comp_text" style="display:none;"></div>
 
 <!-- End Page Container -->
 </div>
@@ -1564,7 +1549,16 @@ function GetOrdersAfterSearch($text_value)
 			 //html = html + "<hr class='w3-clear' style='border-top: 1px solid #337ab7;'>";
 			 if(max_order_show>=3)
 			 {
-				 html = html + "<div style='height: 55px; padding-top: 25px; text-align: right; color: blue;'><span style='cursor: pointer;' onclick='ShowAllCustomerOrders();'>Show More...</span></div>"
+				 var order_val = "";
+				 if($('#auto_comp_text').html() == "")
+				 {
+					 order_val = $text_value;
+				 }
+				 else
+				 {
+					 order_val = $('#auto_comp_text').html();
+				 }
+				 html = html + "<div style='height: 55px; padding-top: 25px; text-align: right; color: blue;'><span style='cursor: pointer;' onclick='ShowAllCustomerSearchedOrders(" + '"' + order_val + '"' + ")" + "'" + ">Show More...</span></div>"
 			 }
 			 $('#user_row_orders').html(html);
 			}
@@ -1580,7 +1574,7 @@ $(function() {
 			$text_value = request.term;
 			$userid = $('#profile_userdiv').html();
 			$.ajax({ url: 'api.php',
-				 data: {function2call: 'GetCustomersOrdersBySearch', userid: $userid, text_value: $text_value},
+				 data: {function2call: 'GetCustomersUniqueOrdersBySearch', userid: $userid, text_value: $text_value},
 				 type: 'post',
 				 //dataType: 'json',
 				 success: function(output) {
@@ -1595,84 +1589,9 @@ $(function() {
 										value: item.CustomerItemDesc
 									}
 								}));
-						 var html="";
-						 var hLine="";
-						 var hlastLine="";
-						 var custOrderDate = "";
-						 var interests_html = "";
-						 $ordid = "";
 						 
-						 html = html + "<div class='row'><div class='col-lg-2'>Order Date</div><div class='col-lg-2'>Order Id</div><div class='col-lg-2'>Item</div><div class='col-lg-2'>Quantity</div><div class='col-lg-2' style='text-align: left;'>Item Value</div><div class='col-lg-2' style='text-align: center;'>Actions</div></div>";
-							 
-						html = html + "<hr class='w3-clear' style='border-top: 1px solid #464242;'>";
-						
-						var actionshtml = "";
-						var actionsdwnhtml = "";
-						
-						var max_order_show = "";
-						
-						if(res.length >= 6)
-						{
-							max_order_show = 5;
-						}
-						else
-						{
-							max_order_show = res.length;
-						}
-							 
-						 for(var i=0;i<max_order_show;i++)
-						 {
-							 var reorder = "reorder" + i;
-							 var invoice = "invoice" + i;
-							 
-							 
-							 if(custOrderDate != "")
-							 {
-								 if(custOrderDate  != res[i]["CustomerOrderDate"])
-								 {
-									hLine = "<hr class='w3-clear' style='border-top: 1px solid #337ab7;'>";
-								 }
-								 else
-								 {
-									 hLine = "";
-								 }
-							 }
-							 if(i ==  max_order_show - 1)
-							 {
-								 hlastLine = "<hr class='w3-clear' style='border-top: 1px dotted #337ab7;'>";
-							 }
-							 if(res[i]["Delivered"] == "Y")
-							 {
-								 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#0bad0d"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Reorder' onclick='Reorder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-send' id=" + reorder + "></i></div>";
-								 
-								 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#0bad0d"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Download Invoice' onclick='DownloadInvoice(" + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-download' id=" + invoice + "></i></div>";
-								 
-								 styleColor = "style='color:#0bad0d'";
-							 }
-							 else
-							 {
-								 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Track your order' onclick='TrackOrder(" + '"' + res[i]["OrderId"] + '"' + "," + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
-								 
-								 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#b56510"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer;' title='Contact Customer Service' onclick='ContactCustomerService(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
-								 
-								 styleColor = "style='color:#b56510;'";
-							 }
-								 
-							 //create the html dynamically
-							 
-							 html = html + "<div class='row'" + styleColor + ">" + hLine + "<div style='display:none;'>" + res[i]["Id"] + "</div><div class='col-lg-2'>" + res[i]["CustomerOrderDate"] + "</div><div class='col-lg-2'>" + res[i]["OrderId"] + "</div><div class='col-lg-2'>" + res[i]["CustomerItemDesc"] + "</div><div class='col-lg-2'>" + res[i]["CustomerItemQty"] + "</div><div class='col-lg-2'>" + res[i]["CustomerOrderValue"] + "</div>" + actionshtml + actionsdwnhtml + "</div><div style='height: 15px'>" + hlastLine + "</div>";
-							 
-							 custOrderDate = res[i]["CustomerOrderDate"];
-						 }
-						 
-						 //html = html + "<hr class='w3-clear' style='border-top: 1px solid #337ab7;'>";
-						 if(max_order_show>=3)
-						 {
-							 html = html + "<div style='height: 55px; padding-top: 25px; text-align: right; color: blue;'><span style='cursor: pointer;' onclick='ShowAllCustomerOrders();'>Show More...</span></div>"
-						 }
-						 $('#user_row_orders').html(html);
-						 //$('#recentorders').html(interests_html);
-						 //end the if statement
+						 //GetOrdersAfterSearch(ui.item.value);
+						 GetOrdersAfterSearch($('#search').val());
 					 }
 					}
 				})
@@ -1688,6 +1607,7 @@ $(function() {
 		//$('ul.ui-autocomplete.ui-menu').css('fontSize', '14px');
 		select: function (e, ui) {
 			GetOrdersAfterSearch(ui.item.value);
+			$('#auto_comp_text').html(ui.item.value);
 			//alert(ui.item.value);
 		},
 
@@ -1695,6 +1615,7 @@ $(function() {
 			if(ui.content.length === 0)
 			{
 				GetCustomersOrders();
+				$('#auto_comp_text').html('');
 			}
 			else
 			{
@@ -1707,7 +1628,9 @@ $(function() {
 	//$('ul.ui-autocomplete.ui-menu').css('fontSize', '14px');
 });
 
-
+$('#search').keyup(function(){
+       $('#auto_comp_text').html('');
+    });
 
 $("#search").focusout(function() {
     if ($("#search").val() == "") {
@@ -1716,7 +1639,7 @@ $("#search").focusout(function() {
 });
 
 $("#search").on("autocompletechange", function(event,ui) {
-       if(ui.content.length === 0)
+       if(ui.content.length == 0)
 	   {
 			GetCustomersOrders();
 	   }
@@ -3691,15 +3614,119 @@ function GetCustomersAllOrders()
 }
 
 
+function GetCustomersSearchedOrders($order_val)
+{
+	//ShowLoader();
+	var styleColor = "";
+	$userid = $('#profile_userdiv').html();
+	$.ajax({ url: 'api.php',
+         data: {function2call: 'GetCustomersSearchedOrdersBySearch', userid: $userid, order_val: $order_val},
+         type: 'post',
+		 //dataType: 'json',
+         success: function(output) {
+			 var res = jQuery.parseJSON(output);
+			 var html = "";
+			 var hLine = "";
+			 var hlastLine = "";
+			 var custOrderDate = "";
+			 var interests_html = "";
+			 $ordid = "";
+			 
+			 html = html + "<div class='col-lg-12' style='height: 90px;width: 1081px;background: rgb(84, 79, 79);border-top-left-radius: 5px;/* border-bottom-left-radius: 5px; */border-top-right-radius: 5px;margin-left: -9px;margin-top: -9px;position: fixed;z-index: 120; text-shadow: 2px 2px 2px #c7c1c1;'><h3>My Orders</h3><span class='pull-right' style='position: relative;margin-right: 20px; margin-top: -35px;'><i class='fa fa-window-close' id='close_all_orders' title='Close' style='cursor: pointer; text-shadow: 2px 2px 2px #928f8f;' onclick='CloseAllOrders()'></i></span></div>";
+			 
+			 html = html + "<div class='row' style='text-shadow: 3px 3px 2px #989090;margin-top: 80px;position: fixed;width: 1081px;background: rgb(84, 79, 79);margin-left: -9px;z-index: 119;height: 40px;/* box-shadow: 1px 3px 5px 0px #989090; */'><div class='col-lg-2'>Order Date</div><div class='col-lg-2'>Order Id</div><div class='col-lg-2'>Item</div><div class='col-lg-2'>Quantity</div><div class='col-lg-2' style='text-align: left;'>Item Value</div><div class='col-lg-2' style='text-align: center;'>Actions</div></div>";
+				 
+			/*html = html + "<hr class='w3-clear' style='border-top: 1px solid #464242;'>";*/
+			html = html + "<div style='margin-top: 150px;'>";
+			
+			var actionshtml = "";
+			var actionsdwnhtml = "";
+			
+			var max_order_show = "";
+			
+			/*if(res.length >= 6)
+			{
+				max_order_show = 5;][pou]
+			}
+			else
+			{
+				max_order_show = res.length;
+			}*/
+			
+			max_order_show = res.length;
+			 
+			 for(var i=0;i<max_order_show;i++)
+			 {
+				 var reorder = "reorderx" + i;
+				 var invoice = "invoicex" + i;
+				 
+				 
+				 if(custOrderDate != "")
+				 {
+					 if(custOrderDate  != res[i]["CustomerOrderDate"])
+					 {
+						hLine = "<hr class='w3-clear' style='border-top: 1px solid #337ab7; margin-right: 15px; margin-left: 15px;'>";
+					 }
+					 else
+					 {
+						 hLine = "";
+					 }
+				 }
+				 if(i ==  max_order_show - 1)
+				 {
+					 hlastLine = "<hr class='w3-clear' style='border-top: 1px dotted #337ab7;'>";
+				 }
+				 if(res[i]["Delivered"] == "Y")
+				 {
+					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"#e8e7f1"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer; text-align: center;' title='Reorder' onclick='Reorder(" + '"' + res[i]["OrderId"] + '"' + ")" + "'" + "><i class='fa fa-send' id=" + reorder + "></i></div>";
+					 
+					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"#e8e7f1"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer; text-align: center;' title='Download Invoice' onclick='DownloadInvoice(" + '"' + res[i]["Id"] + '"' + ")" + "'" + "><i class='fa fa-download' id=" + invoice + "></i></div>";
+					 
+					 styleColor = "style='color:#e8e7f1'";
+				 }
+				 else
+				 {
+					 actionshtml = "<div onmouseover='ChangeColor(" + '"' + reorder + '"' + ", " + '"red"' + "); CreateBoxShadow(" + '"' + reorder + '"' + ");' onmouseout='ChangeColor(" + '"' + reorder + '"' + ", " + '"rgb(243, 110, 139)"' + "); DestroyBoxShadow(" + '"' + reorder + '"' + ");' class='col-lg-1' style='cursor: pointer; text-align: center;' title='Track your order' onclick='Track_Order(" + '"' + res[i]["OrderId"] + '"' + "," + '"' + res[i]["Id"] + '"' + ",event)" + "'" + "><i class='fa fa-map-marker' id=" + reorder + "></i></div>";
+					 
+					 actionsdwnhtml = "<div onmouseover='ChangeColor(" + '"' + invoice + '"' + ", " + '"blue"' + "); CreateBoxShadow(" + '"' + invoice + '"' + ");' onmouseout='ChangeColor(" + '"' + invoice + '"' + ", " + '"rgb(243, 110, 139)"' + "); DestroyBoxShadow(" + '"' + invoice + '"' + ");' class='col-lg-1' style='cursor: pointer; text-align: center;' title='Contact Customer Service' onclick='Contact_CustomerService(" + '"' + res[i]["OrderId"] + '"' + ",event)" + "'" + "><i class='fa fa-phone' id=" + invoice + "></i></div>";
+					 
+					 styleColor = "style='color:rgb(243, 110, 139)'";
+				 }
+					 
+				 //create the html dynamically
+				 
+				 html = html + "<div class='row'" + styleColor + ">" + hLine + "<div style='display:none;'>" + res[i]["Id"] + "</div><div class='col-lg-2'>" + res[i]["CustomerOrderDate"] + "</div><div class='col-lg-2'>" + res[i]["OrderId"] + "</div><div class='col-lg-2'>" + res[i]["CustomerItemDesc"] + "</div><div class='col-lg-2'>" + res[i]["CustomerItemQty"] + "</div><div class='col-lg-2'>" + res[i]["CustomerOrderValue"] + "</div>" + actionshtml + actionsdwnhtml + "</div><div style='height: 15px'>" + hlastLine + "</div>";
+				 
+				 custOrderDate = res[i]["CustomerOrderDate"];
+				 
+			 }
+			 html = html + '</div>';
+			 //html = html + "<hr class='w3-clear' stylargin-top: 150px;e='border-top: 1px solid #337ab7;'>";
+			 
+			 $('#cartitemsdiv').html(html);
+			 //$('#recentorders').html(interests_html);
+			}
+		})
+		//HideLoader();
+}
+
+
 function ShowAllCustomerOrders()
 {
 	GetCustomersAllOrders();
 	$('#cartitemcontainer').show('fold', 500);
 }
 
+function ShowAllCustomerSearchedOrders($order_val)
+{
+	GetCustomersSearchedOrders($order_val);
+	$('#cartitemcontainer').show('fold', 500);
+}
+
 function CloseAllOrders()
 {
 	$('#cartitemcontainer').hide('clip', 500);
+	$('#auto_comp_text').html('');
 }
 
 function Contact_CustomerService($orderid, e)
