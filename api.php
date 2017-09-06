@@ -299,6 +299,55 @@
 	  echo json_encode($row);
  }
  
+ function GetCustomersSearchedOrdersBySearch($userid, $order_val)
+ {
+	$host = "localhost";
+	$user = "root";
+	$pass = "14M@y2010";
+
+	  $databaseName = "homedelivery";
+	  $tableName = "customerdetails";
+		 $con = new PDO("mysql:host=$host;dbname=$databaseName", $user, $pass);
+		 $con->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		  $sql = "SELECT * FROM homedelivery.customerorderdetails
+					WHERE CustomerId = '%". $userid. "%' 
+					OR CustomerItemDesc like '%". $order_val. "%' 
+					order by CustomerOrderDate asc";
+		  
+		  $q = $con->query($sql);
+		  //$row_count = $q->rowCount();
+		  $q->setFetchMode(PDO::FETCH_ASSOC);
+		  $row = $q->fetchAll();
+
+	  echo json_encode($row);
+ }
+ 
+ function GetCustomersUniqueOrdersBySearch($userid, $text_value)
+ {
+	$host = "localhost";
+	$user = "root";
+	$pass = "14M@y2010";
+
+	  $databaseName = "homedelivery";
+	  $tableName = "customerdetails";
+		 $con = new PDO("mysql:host=$host;dbname=$databaseName", $user, $pass);
+		 $con->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		  $sql = "SELECT * FROM homedelivery.customerorderdetails
+					WHERE CustomerId = '%". $userid. "%' 
+					OR CustomerItemDesc like '%". $text_value. "%'
+					GROUP BY CustomerItemDesc
+					ORDER BY CustomerOrderDate asc";
+		  
+		  $q = $con->query($sql);
+		  //$row_count = $q->rowCount();
+		  $q->setFetchMode(PDO::FETCH_ASSOC);
+		  $row = $q->fetchAll();
+
+	  echo json_encode($row);
+ }
+ 
  
  function GetCustomersRecentOrders($userid, $order_id)
  {
@@ -1758,6 +1807,10 @@
     $com_details = $_POST['com_details'];
 	}
 	
+	if(isset($_POST['order_val']) && !empty($_POST['order_val'])) {
+    $order_val = $_POST['order_val'];
+	}
+	
     switch($function2call) {
         case 'GetCustomerDetails' : GetCustomerDetails($custId); break;
         case 'UpdateCustomerOrderDetails' : UpdateCustomerOrderDetails($orderid, $custorderval, $custaddress, $itemqty, $deliverystatus); break;
@@ -1813,6 +1866,8 @@
 		case 'GetComplaints' : GetComplaints($userid); break;
 		case 'TrackCustomersRecentOrders' : TrackCustomersRecentOrders($userid, $order_id, $id); break;
 		case 'GetCustomerCareInfo' : GetCustomerCareInfo(); break;
+		case 'GetCustomersUniqueOrdersBySearch' : GetCustomersUniqueOrdersBySearch($userid, $text_value); break;
+		case 'GetCustomersSearchedOrdersBySearch' : GetCustomersSearchedOrdersBySearch($userid, $order_val); break;
         // other cases
 		//
     }
