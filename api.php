@@ -1505,6 +1505,28 @@
  }
  
  
+ function GetCustomerCareInfo()
+ {
+	$host = "localhost";
+	$user = "root";
+	$pass = "14M@y2010";
+
+	  $databaseName = "homedelivery";
+	  $tableName = "customerdetails";
+		 $con = new PDO("mysql:host=$host;dbname=$databaseName", $user, $pass);
+		 $con->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		  $sql = "SELECT * FROM homedelivery.sitecustomercare";
+		  
+		  $q = $con->query($sql);
+		  //$row_count = $q->rowCount();
+		  $q->setFetchMode(PDO::FETCH_ASSOC);
+		  $row = $q->fetchAll();
+
+	  echo json_encode($row);
+ }
+ 
+ 
  if(isset($_POST['function2call']) && !empty($_POST['function2call'])) {
     $function2call = $_POST['function2call'];
  }
@@ -1790,6 +1812,7 @@
 		case 'UpdateComplaints' : UpdateComplaints($com_sub, $com_details, $userid); break;
 		case 'GetComplaints' : GetComplaints($userid); break;
 		case 'TrackCustomersRecentOrders' : TrackCustomersRecentOrders($userid, $order_id, $id); break;
+		case 'GetCustomerCareInfo' : GetCustomerCareInfo(); break;
         // other cases
 		//
     }
