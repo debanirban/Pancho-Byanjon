@@ -1077,6 +1077,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   <!-- End Grid -->
   </div>
   <div id="profile_userdiv" style="display:none;"><?php echo $_SESSION["user_name"];?></div>
+  
+  <div id="customercarename" style="display:none;"></div>
+  
+  <div id="customercarenumber" style="display:none;"></div>
+  
+  <div id="customercareworktime" style="display:none;"></div>
+  
+  <div id="customercareworkdays" style="display:none;"></div>
 
 <!-- End Page Container -->
 </div>
@@ -1699,6 +1707,8 @@ $(function() {
 	//$('ul.ui-autocomplete.ui-menu').css('fontSize', '14px');
 });
 
+
+
 $("#search").focusout(function() {
     if ($("#search").val() == "") {
         GetCustomersOrders();
@@ -1809,6 +1819,7 @@ $(document).ready(function(){
 			order_search_box_hide();
 			GetDealsInformation();
 			GetComplaints();
+			GetCustomerCareInfo();
 			
 				/* creating the animation for the upload image  */
 				
@@ -3487,11 +3498,9 @@ setInterval(function() {
 	//GetUserFavs();
 }, 60 * 1000);
 
-/*setInterval(function() {
-	LoadUserCart();
-	$('#user_cart_main_container').css('display', 'inline');
-	//GetUserFavs();
-}, 20 * 1000);*/
+setInterval(function() {
+	GetCustomerCareInfo();
+}, 40 * 1000);
 
 
 function GetDealsInformation()
@@ -3536,7 +3545,10 @@ function ContactCustomerService($orderid)
 	
 	//$("#contact_loader_div").show('slide', 1000);
 	
-	$('#contact_msg').html("<div>To get updates for your Order No: <strong>" + $orderid + "</strong> please contact our Customer Care @ 9836667269</div><div style='padding-top: 40px;'><input type='button' value='OK' onclick='HideContactDiv()';></input></div>");
+	var customer_care_name = $('#customercarename').html();
+	var customer_care_number = $('#customercarenumber').html();
+	
+	$('#contact_msg').html("<div>To get updates for your Order No: <strong>" + $orderid + "</strong> please contact our " + customer_care_name +  " @ " +customer_care_number + "</div><div style='padding-top: 40px;'><input type='button' value='OK' onclick='HideContactDiv()';></input></div>");
 }
 
 function HideContactDiv()
@@ -3692,9 +3704,12 @@ function CloseAllOrders()
 
 function Contact_CustomerService($orderid, e)
 {
+	var customer_care_name = $('#customercarename').html();
+	var customer_care_number = $('#customercarenumber').html();
+	
 	$('#order_contact_care').css({'top':e.pageY-50,'left':e.pageX - 200, 'position':'absolute', 'border':'1px solid black', 'padding':'5px', 'z-index': '116', 'background-color': 'rgba(146, 150, 154, 0.87)', 'width': '255px', 'box-shadow':'4px 2px 0px rgba(35, 32, 32, 0.68)', 'height': '115px', 'display':'block'});
     
-	$('#order_contact_care_span').html("<div>To get updates for your Order No: <strong>" + $orderid + "</strong> please contact our Customer Care @ 9836667269</div>");
+	$('#order_contact_care_span').html("<div>To get updates for your Order No: <strong>" + $orderid + "</strong> please contact our " + customer_care_name + " @ "  + customer_care_number + "</div>");
 	
 	$('#order_contact_care').show();
 }
@@ -3872,6 +3887,27 @@ function RemoveItemsFromUserCart($itemid, $itemqty)
 							});
 	
 	
+}
+
+
+function GetCustomerCareInfo()
+{
+	$.ajax({ url: 'api.php',
+         data: {function2call: 'GetCustomerCareInfo'},
+         type: 'post',
+		 //dataType: 'json',
+         success: function(output) {
+                      var res = jQuery.parseJSON(output);
+					  
+					  $('#customercarename').html(res[0]["CustomerCareName"]);
+					  $('#customercarenumber').html(res[0]["CustomerCareNumber"]);
+					  $('#customercareworktime').html(res[0]["CustomerCareWorkTime"]);
+					  $('#customercareworkdays').html(res[0]["CustomerCareWorkDays"]);
+		 },
+		 error: function ( xhr, status, error) {
+					alert('Problem updating the database');
+			}
+		});
 }
 
 /*$('#close_all_orders').on('click', function() {
