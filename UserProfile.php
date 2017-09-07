@@ -436,14 +436,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="My Cart" onclick="OpenCartDiv();"><i class="fa fa-shopping-cart faa-passing-reverse animated"></i><span class="w3-badge w3-right w3-small w3-green" id="cart_items_count"></span></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Feedback"><i class="fa fa-handshake-o"></i></a>
   <div class="w3-dropdown-hover w3-hide-small" id="notif_div">
-    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell faa-ring animated"></i><span class="w3-badge w3-right w3-small w3-green" id="notifications_count">3</span></button>     
-    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px" id="notifications_list">
+    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell faa-ring animated"></i><span class="w3-badge w3-right w3-small w3-green" id="notifications_count"></span></button>     
+    <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;" id="notifications_list">
       <!--<a href="#" class="w3-bar-item w3-button">One new friend request</a>
       <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
       <a href="#" class="w3-bar-item w3-button">Jane likes your post</a>-->
-	  <span class="w3-bar-item w3-button">Please go through these notifications</span>
+	  <!--<span class="w3-bar-item w3-button">Please go through these notifications</span>
 	  <span class="w3-bar-item w3-button">Just open the list</span>
-	  <span class="w3-bar-item w3-button">And all is done</span>
+	  <span class="w3-bar-item w3-button">And all is done</span>-->
     </div>
   </div>
   
@@ -1743,6 +1743,7 @@ $(document).ready(function(){
 			GetDealsInformation();
 			GetComplaints();
 			GetCustomerCareInfo();
+			GetNotifications();
 			
 				/* creating the animation for the upload image  */
 				
@@ -3425,6 +3426,10 @@ setInterval(function() {
 	GetCustomerCareInfo();
 }, 40 * 1000);
 
+setInterval(function() {
+	GetNotifications();
+}, 20 * 1000);
+
 
 function GetDealsInformation()
 {
@@ -3930,6 +3935,41 @@ function GetCustomerCareInfo()
 					  $('#customercarenumber').html(res[0]["CustomerCareNumber"]);
 					  $('#customercareworktime').html(res[0]["CustomerCareWorkTime"]);
 					  $('#customercareworkdays').html(res[0]["CustomerCareWorkDays"]);
+		 },
+		 error: function ( xhr, status, error) {
+					alert('Problem updating the database');
+			}
+		});
+}
+
+function GetNotifications()
+{
+	var html = "";
+	$.ajax({ url: 'api.php',
+         data: {function2call: 'GetNotifications'},
+         type: 'post',
+		 //dataType: 'json',
+         success: function(output) {
+                      var res = jQuery.parseJSON(output);
+					  
+					  $('#notifications_count').html(res.length);
+					  //$('#customercarenumber').html(res[0]["CustomerCareNumber"]);
+					  //$('#customercareworktime').html(res[0]["CustomerCareWorkTime"]);
+					  //$('#customercareworkdays').html(res[0]["CustomerCareWorkDays"]);
+					  for(var i=0; i<res.length; i++)
+					  {
+						  if(i == res.length - 1)
+						  {
+							  html = html + "<span class='w3-bar-item w3-button' style='font-size: 14px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;'>" + res[i]["Users_Notification_Desc"] + "</span>";
+						  }
+						  else
+						  {
+							  html = html + "<span class='w3-bar-item w3-button' style='font-size: 14px;'>" + res[i]["Users_Notification_Desc"] + "</span>";
+							  //html = html + "<span><hr></hr></span>"
+						  }
+					  }
+					  
+					  $('#notifications_list').html(html);
 		 },
 		 error: function ( xhr, status, error) {
 					alert('Problem updating the database');
