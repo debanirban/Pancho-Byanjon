@@ -675,7 +675,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 		<div id="contact_loader_div" class="_mid_loader_div container-fluid" style="background-color: rgba(204, 204, 204, 0.95); display: none;">
 			<div id="contact_msg" class="row">
 			</div>
-			<div id="div_contact_img" class="col-lg-2" style="display: none;"><img id = "contact_order_status_img" style="height:50px;"></img></div>
+			<!--<div id="div_contact_img" class="col-lg-2" style="display: none;"><img id = "contact_order_status_img" style="height:50px;"></img></div>-->
 			<div id="contact_msg_btn" class="row" style="position: absolute; margin-top: 80px; display: none;">
 				<input type="button" value="OK" onclick="HideTrackOrderDiv()" ;="">
 			</div>
@@ -1208,11 +1208,11 @@ function GetComplaints()
 						  {
 							  if(res[i]["ComplainSubject"].length > 20)
 							  {
-								  html = html + "<p id=" + res[i]["ComplainId"] + " style='color: blue; text-align: left; cursor: pointer; text-decoration: none;' onclick='ShowUserComplains(" + '"' + res[i]["ComplainSubject"] + '"' + "," + '"' + res[i]["ComplainDesc"] + '"' + ")" + "'" + ">" + res[i]["ComplainSubject"].substr(0, 19) + "..." + "</p>";
+								  html = html + "<p id=" + res[i]["ComplainId"] + " style='color: blue; text-align: left; cursor: pointer; text-decoration: none;' onclick='ShowUserComplains(" + '"' + res[i]["ComplainId"] + '"' + ")" + "'" + ">" + res[i]["ComplainSubject"].substr(0, 19) + "..." + "</p>";
 							  }
 							  else
 							  {
-								html = html + "<p id=" + res[i]["ComplainId"] + " style='color: blue; text-align: left; cursor: pointer; text-decoration: none;' onclick='ShowUserComplains(" + '"' + res[i]["ComplainSubject"] + '"' + "," + '"' + res[i]["ComplainDesc"] + '"' + ")" + "'" + ">" + res[i]["ComplainSubject"] + "</p>";
+								html = html + "<p id=" + res[i]["ComplainId"] + " style='color: blue; text-align: left; cursor: pointer; text-decoration: none;' onclick='ShowUserComplains(" + '"' + res[i]["ComplainId"] + '"' + ")" + "'" + ">" + res[i]["ComplainSubject"] + "</p>";
 							  }
 						  }
 					  }
@@ -1222,20 +1222,40 @@ function GetComplaints()
 	});
 }
 
-function ShowUserComplains($sub, $des)
+function ShowUserComplains($idval)
 {
-	if ( $("#complaint_box_non_edit" ).is( ":hidden" ) ) {
-		$("#complaint_box_edit" ).hide();
-		$("#complaint_box_non_edit" ).slideDown( "slow" );
-		$("#complaint_box_non_edit" ).show();
-		$('#compaint_box_subject_text_non_edit').html($sub);
-		$('#compaint_box_details_text_non_edit').html($des);
-	  }
-	  else
-	  {
-		$('#compaint_box_subject_text_non_edit').html($sub);
-		$('#compaint_box_details_text_non_edit').html($des);
-	  }
+	var html = "";
+	$.ajax({ url: 'api.php',
+	 data: {function2call: 'GetComplaintsDetails', idval: $idval},
+	 type: 'post',
+	 //dataType: 'json',
+	 success: function(output) {
+				  var res = jQuery.parseJSON(output);
+				  $sub = res[0]["ComplainSubject"];
+				  $des = res[0]["ComplainDesc"];
+				  if(res.length == 0)
+				  {
+					  $('#complaints_list').html('<p>You do not have any complaints yet.</p>');
+				  }
+				  else
+				  {
+					  if ( $("#complaint_box_non_edit" ).is( ":hidden" ) ) 
+					  {
+							$("#complaint_box_edit" ).hide();
+							$("#complaint_box_non_edit" ).slideDown( "slow" );
+							$("#complaint_box_non_edit" ).show();
+							$('#compaint_box_subject_text_non_edit').html($sub);
+							$('#compaint_box_details_text_non_edit').html($des);
+					  }
+					  else
+					  {
+						$('#compaint_box_subject_text_non_edit').html($sub);
+						$('#compaint_box_details_text_non_edit').html($des);
+					  }
+					  //$('#complaints_list').html(html);
+				  }
+		}
+	});
 }
 
 function ShowComplainLoader()
@@ -3503,12 +3523,12 @@ function TrackOrder($order_id, $id)
 				
 				$('#contact_msg_btn').show();
 				
-				$('#div_contact_img').show();
+				//$('#div_contact_img').show();
 				
 				//$("#contact_loader_div").show('slide', 1000);
 				
 				$('#contact_msg').html("<div class='col-lg-12'>Your Order No: <strong>" + $order_id + "</strong> is <strong>" + res[0]["CustomerOrderStatus"] + "</strong></div>");
-				$('#contact_order_status_img').attr('src', res[0]["Customer_Order_Status_Image"]);
+				//$('#contact_order_status_img').attr('src', res[0]["Customer_Order_Status_Image"]);
 	
 			}
 		});
@@ -3518,7 +3538,7 @@ function HideTrackOrderDiv()
 {
 	$('#contact_loader_div').hide('clip', 500);
 	$('#contact_msg_btn').hide();
-	$('#div_contact_img').hide();
+	//$('#div_contact_img').hide();
 }
 
 
