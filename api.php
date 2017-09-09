@@ -1597,6 +1597,52 @@
 	  echo json_encode($row);
  }
  
+ function GetUserWelcomeText()
+ {
+	$host = "localhost";
+	$user = "root";
+	$pass = "14M@y2010";
+
+	  $databaseName = "homedelivery";
+	  $tableName = "customerdetails";
+		 $con = new PDO("mysql:host=$host;dbname=$databaseName", $user, $pass);
+		 $con->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		  $sql = "SELECT * FROM homedelivery.userwelcome order by rand() limit 1";
+		  
+		  $q = $con->query($sql);
+		  //$row_count = $q->rowCount();
+		  $q->setFetchMode(PDO::FETCH_ASSOC);
+		  $row = $q->fetchAll();
+
+	  echo json_encode($row);
+ }
+ 
+ 
+ function GetComplaintsDetails($idval)
+ {
+	$host = "localhost";
+	$user = "root";
+	$pass = "14M@y2010";
+	
+	//$pa = md5($pwd);
+	
+	  $databaseName = "homedelivery";
+	  $tableName = "customerdetails";
+		 $con = new PDO("mysql:host=$host;dbname=$databaseName", $user, $pass);
+		 $con->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		 $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		  $sql = "SELECT * from homedelivery.user_complains 
+					WHERE ComplainId = '". $idval. "'";
+			  
+		  $q = $con->query($sql);
+		  //$row_count = $q->rowCount();
+		  $q->setFetchMode(PDO::FETCH_ASSOC);
+		  $row = $q->fetchAll();
+
+			echo json_encode($row);
+ }
+ 
  
  if(isset($_POST['function2call']) && !empty($_POST['function2call'])) {
     $function2call = $_POST['function2call'];
@@ -1891,6 +1937,8 @@
 		case 'GetCustomersUniqueOrdersBySearch' : GetCustomersUniqueOrdersBySearch($userid, $text_value); break;
 		case 'GetCustomersSearchedOrdersBySearch' : GetCustomersSearchedOrdersBySearch($userid, $order_val); break;
 		case 'GetNotifications' : GetNotifications(); break;
+		case 'GetUserWelcomeText' : GetUserWelcomeText(); break;
+		case 'GetComplaintsDetails' : GetComplaintsDetails($idval); break;
         // other cases
 		//
     }
