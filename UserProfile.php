@@ -16,6 +16,7 @@ if (!isset($_SESSION['user_name']) && empty($_SESSION['user_name']))
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+<script src="jquery.visible.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -42,14 +43,10 @@ if (!isset($_SESSION['user_name']) && empty($_SESSION['user_name']))
 
 <style>
 html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
-
-
 <!-- this is for the rating -->
-
 .rating {
     float:left;
 }
-
 /* :not(:checked) is a filter, so that browsers that don’t support :checked don’t 
    follow these rules. Every browser that supports :checked also supports :not(), so
    it doesn’t make the test unnecessarily selective */
@@ -58,7 +55,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
     
     clip:rect(0,0,0,0);
 }
-
 .rating:not(:checked) > label {
     float:right;
     width:1em;
@@ -71,22 +67,18 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
     color:#ddd;
     text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
 }
-
 .rating:not(:checked) > label:before {
     content: '★ ';
 }
-
 .rating > input:checked ~ label {
     color: #f70;
     text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
 }
-
 .rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
     color: gold;
     text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
 }
-
 .rating > input:checked + label:hover,
 .rating > input:checked + label:hover ~ label,
 .rating > input:checked ~ label:hover,
@@ -95,13 +87,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
     color: #ea0;
     text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
 }
-
 .rating > label:active {
     position:relative;
     top:2px;
     left:2px;
 }
-
 .overlay {
     position: fixed;
     width: 100%;
@@ -131,11 +121,9 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
     color:#fff !important;
     /* z-index:2; */
 }
-
 .file-upload {
     display: none;
 }
-
 ._mid_loader_div
 {
 	text-align: center;
@@ -143,14 +131,13 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 	z-index: 90; 
 	background-color: 
 	rgba(204, 204, 204, 0.65);
-	width: 740.406px;
+	width: 745.406px;
 	margin-left: 15px; 
 	margin-top: 15px; 
 	display: flex;
 	justify-content: center; /* align horizontal */
 	align-items: center; /* align vertical */
 }
-
 ._exp_chart_loader_div
 {
 	text-align: center;
@@ -159,12 +146,11 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 	background-color: 
 	rgba(204, 204, 204, 0.65);
 	width: 740.406px;
-	margin-left: 345px; 
+	margin-left: 348px; 
 	display: flex;
 	justify-content: center; /* align horizontal */
 	align-items: center; /* align vertical */
 }
-
 ._prf_loader_div
 {
 	text-align: center;
@@ -177,7 +163,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 	justify-content: center; /* align horizontal */
 	align-items: center; /* align vertical */
 }
-
 ._complain_loader_div
 {
 	text-align: center;
@@ -187,13 +172,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 	rgba(204, 204, 204, 0.95);
 	height: 255px;
 	font-size: 10px;
-    width: 220px;
-    left: 1115.14px;
+    width: 221px;
+    left: 1119.4px;
 	display: flex;
 	justify-content: center; /* align horizontal */
 	align-items: center; /* align vertical */
 }
-
 .loading {
   font: 25px/1.5 Monospace;
   color: black;
@@ -265,24 +249,19 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   -webkit-animation-delay: 1.4s;
           animation-delay: 1.4s;
 }
-
 @-webkit-keyframes flip {
   to {
     -webkit-transform: rotateX(1turn);
             transform: rotateX(1turn);
   }
 }
-
 @keyframes flip {
   to {
     -webkit-transform: rotateX(1turn);
             transform: rotateX(1turn);
   }
 }
-
-
 /** searchbox **/
-
 #searchbox
 {
     background-color: #eaf8fc;
@@ -297,12 +276,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
     margin: 100px auto 50px;
     overflow: hidden; /* Clear floats */
 }
-
 #search, 
 #submit {
     float: left;
 }
-
 #search {
     padding: 5px 9px;
     height: 35px;
@@ -313,7 +290,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
     border-radius: 50px 3px 3px 50px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25) inset, 0 1px 0 rgba(255, 255, 255, 1);            
 }
-
 #submit
 {       
     background-color: #6cbb6b;
@@ -333,43 +309,35 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
     color: #23441e;    
     text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
-
 #submit:hover {       
     background-color: #95d788;
     background-image: linear-gradient(#6cbb6b, #95d788);
 }   
-
 #submit:active {       
     background: #95d788;
     outline: none;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5) inset;        
 }
-
 #submit::-moz-focus-inner {
        border: 0;  /* Small centering fix for Firefox */
 }
-
 #search::-webkit-input-placeholder {
    color: #9c9c9c;
    font-style: italic;
 }
-
 #search:-moz-placeholder {
    color: #9c9c9c;
    font-style: italic;
 }  
-
 #search:-ms-placeholder {
    color: #9c9c9c;
    font-style: italic;
 } 
-
 #search.placeholder {
    color: #9c9c9c !important;
    font-style: italic;
 }
 /* ----------------------- */
-
 .box {
   position: relative;
   display: inline-block;
@@ -382,7 +350,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-
 .box::after {
   content: "";
   border-radius: 5px;
@@ -397,33 +364,41 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
-
 .box:hover {
   -webkit-transform: scale(1.25, 1.25);
   transform: scale(1.25, 1.25);
 }
-
 .box:hover::after {
     opacity: 1;
 }
-
 /* Scrollbar Styling */
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 4px;
 }
  
 ::-webkit-scrollbar-track {
     background-color: #ebebeb;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
 }
 
 ::-webkit-scrollbar-thumb {
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
     background: #6d6d6d; 
 }
 
+.come-in {
+  transform: translateY(150px);
+  animation: come-in 0.8s ease forwards;
+}
+.come-in:nth-child(odd) {
+  animation-duration: 0.6s; /* So they look staggered */
+}
+
+@keyframes come-in {
+  to { transform: translateY(0); }
+}
 </style>
 <body class="w3-theme-l5">
 
@@ -433,10 +408,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
   <a href="Home.php" class="w3-bar-item w3-button w3-padding-large w3-theme-d4" style="font-family:Lobster;" title="Home - Pancho Byanjon"><i class="fa fa-home w3-margin-right"></i>Pancho Byanjon <img src="PB.png" style="height: 25px;margin-left: 12px; margin-top: -7px;"></a>
   <!--<a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="News"><i class="fa fa-globe"></i></a>-->
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="My Cart" onclick="OpenCartDiv();"><i class="fa fa-shopping-cart faa-passing-reverse animated"></i><span class="w3-badge w3-right w3-small w3-green" id="cart_items_count"></span></a>
+  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white faa-parent animated-hover" title="My Cart" onclick="OpenCartDiv();"><i class="fa fa-shopping-cart faa-flash"></i><span class="w3-badge w3-right w3-small w3-green" id="cart_items_count"></span></a>
   <a href="#" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white" title="Feedback"><i class="fa fa-handshake-o"></i></a>
   <div class="w3-dropdown-hover w3-hide-small" id="notif_div">
-    <button class="w3-button w3-padding-large" title="Notifications"><i class="fa fa-bell faa-ring animated"></i><span class="w3-badge w3-right w3-small w3-green" id="notifications_count"></span></button>     
+    <button class="w3-button w3-padding-large faa-parent animated-hover" title="Notifications"><i class="fa fa-bell faa-ring"></i><span class="w3-badge w3-right w3-small w3-green" id="notifications_count"></span></button>     
     <div class="w3-dropdown-content w3-card-4 w3-bar-block" style="width:300px; border-bottom-left-radius: 5px; border-bottom-right-radius: 5px;" id="notifications_list">
       <!--<a href="#" class="w3-bar-item w3-button">One new friend request</a>
       <a href="#" class="w3-bar-item w3-button">John Doe posted on your wall</a>
@@ -512,7 +487,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 			<div id="update_ph_no" style="margin-left: 238px; pointer; position: absolute; display:none; margin-top: -32px;">
 				<i title="Update Phone Number" class="fa fa-save fa-fw w3-margin-right w3-text-theme" style="margin-left: 10px; cursor: pointer;" onclick="PhoneNumberUpdate();"></i>
 			</div>
-			<div id="cancel_update" style="margin-left: 258px; position: absolute; display:none; margin-top: -32px;">
+			<div id="cancel_update" style="margin-left: 268px; position: absolute; display:none; margin-top: -32px;">
 				<i title="Do not update phone number" class="fa fa-times fa-fw w3-margin-right w3-text-theme" style="margin-left: 15px; cursor: pointer;" onclick="PhoneNumberEditCancel();"></i>
 			</div>
 		</p>
@@ -528,7 +503,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 			<div id="update_email_id" style="margin-left: 238px; position: absolute; margin-top: -32px; display:none;">
 				<i title="Update Email Id" class="fa fa-save fa-fw w3-margin-right w3-text-theme" style="margin-left: 10px; cursor: pointer;" onclick="EmailIdUpdate();"></i>
 			</div>
-			<div id="cancel_update_email_id" style="margin-left: 258px; position: absolute; margin-top: -32px; display:none;">
+			<div id="cancel_update_email_id" style="margin-left: 268px; position: absolute; margin-top: -32px; display:none;">
 				<i title="Do not update email id" class="fa fa-times fa-fw w3-margin-right w3-text-theme" style="margin-left: 15px; cursor: pointer;" onclick="EmailIdEditCancel();"></i>
 			</div>
 		</p>
@@ -574,7 +549,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <br>
       
       <!-- Interests --> 
-      <div class="w3-card-2 w3-round w3-white w3-hide-small">
+      <div class="w3-card-2 w3-round w3-white w3-hide-small" id="recent_orders_div" style="display: none";>
         <div class="w3-container">
           <p>Recent Orders</p>
 		  <div id="recentorders">
@@ -618,7 +593,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
             <div class="w3-container w3-padding">
               <h6 class="w3-opacity pull-right">Snapshot: My Expenditure</h6>
               <!--<p contenteditable="true" class="w3-border w3-padding">Status: Feeling Blue</p>
-              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button> -->
+              <button type="button" class="w3-button w3-theme"><i class="fa fa-pencil"></i>  Post</button> -->
 			  <!-- creating the graphs -->
 				<div>
 					<div id="chart_div"><a href="#"></a></div>
@@ -826,10 +801,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 							<div class="col-md-4 col-md-offset-1" style="width: 150%;">
 							  <form class="form-horizontal" role="form">
 								<fieldset style="border-radius: 5px;">
-
 								  <!-- Form Name -->
 								  <legend>Add Address Details</legend>
-
 								  <!-- Text input-->
 								  <div class="form-group">
 									<label class="col-sm-2 control-label" for="textinput">Address 1</label>
@@ -837,7 +810,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 									  <input type="text" placeholder="Address Line 1" class="form-control" id="addr1">
 									</div>
 								  </div>
-
 								  <!-- Text input-->
 								  <div class="form-group">
 									<label class="col-sm-2 control-label" for="textinput">Address 2</label>
@@ -845,7 +817,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 									  <input type="text" placeholder="Address Line 2" class="form-control" id="addr2">
 									</div>
 								  </div>
-
 								  <!-- Text input-->
 								  <div class="form-group">
 									<label class="col-sm-2 control-label" for="textinput">City</label>
@@ -853,14 +824,12 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 									  <input type="text" placeholder="City" class="form-control" value = "Kolkata" disabled id="city">
 									</div>
 								  </div>
-
 								  <!-- Text input-->
 								  <div class="form-group">
 									<label class="col-sm-2 control-label" for="textinput">State</label>
 									<div class="col-sm-4">
 									  <input type="text" placeholder="State" class="form-control" value = "West Bengal" disabled id="state">
 									</div>
-
 									<label class="col-sm-2 control-label" for="textinput">Postcode</label>
 									<div class="col-sm-4">
 									  <input type="text" placeholder="Post Code" class="form-control" id="area_zipcode" onblur="GetGeoPlaces();">
@@ -910,7 +879,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 									  </div>
 									</div>
 								  </div>
-
 								</fieldset>
 							  </form>
 							</div><!-- /.col-lg-12 -->
@@ -930,14 +898,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 			</div>
 	</div>
 	  
-      <div class="w3-container w3-card-2 w3-white w3-round w3-margin"><br>
+      <div class="w3-container w3-card-2 w3-white w3-round w3-margin" id="settings_div"><br>
         <img src="images/setting2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <!--<span class="w3-right w3-opacity">16 min</span>-->
         <h4>My Settings</h4><br>
         <hr class="w3-clear">
         <!--<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </div>-->
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i>  Like</button> 
+        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i>  Comment</button> </div>-->
 		<div id="mycart_show">
 			<div>
 				<div class="pull-left">I want to receive notifications</div>
@@ -1003,7 +971,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       </div>
       <br id="second_br">
 	  
-      <div class="w3-card-2 w3-round w3-white w3-center" id="complaint_box">
+      <div class="w3-card-2 w3-round w3-white w3-center" id="complaint_box" style="display:none;">
         <div class="w3-container">
           <p>My Complaints</p>
 		  <div style="height:10px"></div>
@@ -1085,7 +1053,6 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
 </footer>
  			  
 <script>
-
   var pfilled;
   var cpfilled;
   var idreset;
@@ -1105,7 +1072,6 @@ function myFunction(id) {
         x.previousElementSibling.className.replace(" w3-theme-d1", "");
     }
 }
-
 $('#make_complain_box' ).click(function () {
 	if ( $("#complaint_box_edit" ).is( ":hidden" ) ) {
 		$("#complaint_box_edit" ).slideDown( "slow" );
@@ -1113,7 +1079,6 @@ $('#make_complain_box' ).click(function () {
 		$("#complaint_box_non_edit" ).hide();
 	  } 
 });
-
 $('#add_deal_item').click(function () {
 	$no_of_items = $('#no_of_deal_items').html();
 	$nof = parseInt($no_of_items);
@@ -1125,25 +1090,18 @@ $('#add_deal_item').click(function () {
 			//$('#deal_order_now').html('Discard');
 		  }
 });
-
-
 $('#add_deal_item').on('mousedown', function () {
 	$('#add_deal_item').css('text-shadow', '0px 0px 0px #777');
 });
-
 $('#add_deal_item').on('mouseup', function () {
 	$('#add_deal_item').css('text-shadow', '4px 4px 6px #777');
 });
-
 $('#remove_deal_item').on('mousedown', function () {
 	$('#remove_deal_item').css('text-shadow', '0px 0px 0px #777');
 });
-
 $('#remove_deal_item').on('mouseup', function () {
 	$('#remove_deal_item').css('text-shadow', '4px 4px 6px #777');
 });
-
-
 $('#remove_deal_item' ).click(function () {
 	$no_of_items = $('#no_of_deal_items').html();
 	$nof = parseInt($no_of_items);
@@ -1163,7 +1121,6 @@ $('#remove_deal_item' ).click(function () {
 	
 	$('#no_of_deal_items').html($nof);
 });
-
 /*$('#deal_order_now' ).click(function () {
 	if ( $("#order_deal_item" ).is( ":hidden" ) ) {
 		$("#order_deal_item" ).slideDown( "slow" );
@@ -1172,7 +1129,6 @@ $('#remove_deal_item' ).click(function () {
 		//$('#cancel_deal_order' ).show();
 	  } 
 });*/
-
 $('#deal_order_now' ).click(function () {
 	if ( $("#order_deal_item" ).is( ":hidden" ) ) {
 			$("#order_deal_item" ).slideDown( "slow" );
@@ -1186,7 +1142,6 @@ $('#deal_order_now' ).click(function () {
 			//$('#cancel_deal_order' ).hide();
 		  }
 });
-
 function GetComplaints()
 {
 	var html = "";
@@ -1221,7 +1176,6 @@ function GetComplaints()
 		}
 	});
 }
-
 function ShowUserComplains($idval)
 {
 	var html = "";
@@ -1257,7 +1211,6 @@ function ShowUserComplains($idval)
 		}
 	});
 }
-
 function ShowComplainLoader()
 {
 	var html = "<div id='complain_msg' style='font-size: 14px;'></div>";
@@ -1268,7 +1221,6 @@ function ShowComplainLoader()
 	
 	$('#complain_loader_div').show();
 }
-
 function ShowComplainLoading()
 {
 	var html = "<div class='loading'><span>P</span><span>a</span><span>n</span><span>c</span><span>h</span><span>o</span><span>&nbsp;</span><span>B</span><span>y</span><span>a</span><span>n</span><span>j</span><span>o</span><span>n</span></div>";
@@ -1279,21 +1231,17 @@ function ShowComplainLoading()
 	
 	$('#complain_loader_div').show();
 }
-
 function HideComplainLoading()
 {
 	$('#complain_loader_div').html('');
 	
 	$('#complain_loader_div').hide();
 }
-
-
 function HideComplainLoader()
 {
 	$('#complain_loader_div').html('');
 	$('#complain_loader_div').hide();
 }
-
 function CheckForEmptyBoxes()
 {
 	ShowComplainLoading();
@@ -1322,7 +1270,6 @@ function CheckForEmptyBoxes()
 	
 	return true;
 }
-
 $('#save_complaint' ).click(function () {
 	var getVal = CheckForEmptyBoxes();
 	if(getVal)
@@ -1353,8 +1300,6 @@ $('#save_complaint' ).click(function () {
 		  }
 	}
 });
-
-
 $('#cancel_complaint_non_edit' ).click(function () {
 	if ( $("#complaint_box_non_edit" ).is( ":hidden" ) ) {
 		$("#complaint_box_non_edit" ).slideDown( "slow" );
@@ -1365,7 +1310,6 @@ $('#cancel_complaint_non_edit' ).click(function () {
 		$('#compaint_box_details_text_non_edit').val('');
 	  }
 });
-
 $('#cancel_complaint' ).click(function () {
 	if ( $("#complaint_box_edit" ).is( ":hidden" ) ) {
 		$("#complaint_box_edit" ).slideDown( "slow" );
@@ -1376,8 +1320,6 @@ $('#cancel_complaint' ).click(function () {
 		$('#compaint_box_details_text').val('');
 	  }
 });
-
-
 function FillPassword()
   {
 	  if ($('#password').val() == "")
@@ -1443,9 +1385,6 @@ function FillPassword()
 		  }
 	  }
   }
-
-
-
 function GetDetails(id) {
     var x = document.getElementById(id);
 	$topic_val = $('#' + id).html();
@@ -1453,7 +1392,6 @@ function GetDetails(id) {
 	$('#topic_header').html($topic_val);
 	$('#' + id).show();
 }
-
 function ShowDivDetails(id, idhide, thide, fhide, fihide, shide, sehide, ehide) {
 	$('#' + id).show();
 	$('#' + idhide).hide();
@@ -1475,7 +1413,6 @@ function openNav() {
         x.className = x.className.replace(" w3-show", "");
     }
 }
-
 /*$(function() {
     $('#search').autocomplete({
         source: 'searchOrders.php'
@@ -1483,7 +1420,6 @@ function openNav() {
 	//changing the autocomplete box's font size
 	$('ul.ui-autocomplete.ui-menu').css('fontSize', '14px');
 }); */
-
 function GetOrdersAfterSearch($text_value)
 {
 	$userid = $('#profile_userdiv').html();
@@ -1584,8 +1520,6 @@ function GetOrdersAfterSearch($text_value)
 			}
 		})
 }
-
-
 $(function() {
 	var styleColor = "";
     $('#search').autocomplete({
@@ -1630,7 +1564,6 @@ $(function() {
 			$('#auto_comp_text').html(ui.item.value);
 			//alert(ui.item.value);
 		},
-
 		change: function (e, ui) {
 			if(ui.content.length === 0)
 			{
@@ -1647,17 +1580,14 @@ $(function() {
 	////changing the autocomplete box's font size
 	//$('ul.ui-autocomplete.ui-menu').css('fontSize', '14px');
 });
-
 $('#search').keyup(function(){
        $('#auto_comp_text').html('');
     });
-
 $("#search").focusout(function() {
     if ($("#search").val() == "") {
         GetCustomersOrders();
     }
 });
-
 $("#search").on("autocompletechange", function(event,ui) {
        if(ui.content.length == 0)
 	   {
@@ -1666,7 +1596,6 @@ $("#search").on("autocompletechange", function(event,ui) {
     });
 	
 //$("#search").data("ui-autocomplete")._trigger("change")
-
 $(document).ready(function(){
 	$user_name = $('#profile_userdiv').html();
 	$.ajax({ url: 'api.php',
@@ -1716,7 +1645,7 @@ $(document).ready(function(){
 								  $('#upcoming_deals').show();
 								  $('#first_br').show();
 								  $('#second_br').show();
-								  $('#deal_info').bootstrapToggle('on')
+								  $('#deal_info').bootstrapToggle('on');
 							  }
 							  
 							  
@@ -1764,6 +1693,8 @@ $(document).ready(function(){
 			GetComplaints();
 			GetCustomerCareInfo();
 			GetNotifications();
+			//IfSettingsDivVisible();
+			//$('#settings_div').hide();
 			
 				/* creating the animation for the upload image  */
 				
@@ -1806,7 +1737,6 @@ $(document).ready(function(){
 					if (input.files && input.files[0]) {
 						ShowProfileLoadingLoader();
 						var reader = new FileReader();
-
 						reader.onload = function (e) {
 							$('#user_profile_image').attr('src', e.target.result);
 							SaveUserProfileImage();
@@ -1835,9 +1765,6 @@ $(document).ready(function(){
 						//$('#order_contact_care').hide();
 					});*/
 });
-
-
-
 function ShowLoader()
 {
 	$('#fav_loader_div').css('height', $('#main_container_middle').height());
@@ -1848,7 +1775,6 @@ function ShowLoader()
 	
 	$('#fav_loader_div').show();
 }
-
 function ShowProfileLoader()
 {
 	$('#profile_loader_div').css('height', $('#PBProfile_div').height());
@@ -1863,7 +1789,6 @@ function ShowProfileLoader()
 	
 	$('#profile_loader_div').show();
 }
-
 function ShowProfileLoadingLoader()
 {
 	$('#profile_loader_div').css('height', $('#PBProfile_div').height());
@@ -1878,22 +1803,18 @@ function ShowProfileLoadingLoader()
 	
 	$('#profile_loader_div').show();
 }
-
 function HideProfileLoadingLoader()
 {
 	$('#profile_loader_div').hide();
 }
-
 function HideProfileLoader()
 {
 	$('#profile_loader_div').hide();
 }
-
 function HideLoader()
 {
 	$('#fav_loader_div').hide();
 }
-
 function ShowChartLoader()
 {
 	$('#chart_loader_div').css('height', $('#my_exp_chart_div').height());
@@ -1904,12 +1825,10 @@ function ShowChartLoader()
 	
 	$('#chart_loader_div').show();
 }
-
 function HideChartLoader()
 {
 	$('#chart_loader_div').hide();
 }
-
 function UpdateUserProfileWithImage($img)
 {
 	ShowProfileLoadingLoader();
@@ -1928,8 +1847,6 @@ function UpdateUserProfileWithImage($img)
 		});
 		HideProfileLoadingLoader();
 }
-
-
 function SaveUserProfileImage()
 {
 	ShowProfileLoadingLoader();
@@ -1957,12 +1874,10 @@ function SaveUserProfileImage()
 	  }
 	  //HideProfileLoadingLoader();
 }
-
 function LoadUserCart()
 {
 	$('#load_cart').load('UserCart.php');
 }
-
 function OpenCartDiv()
 {
 	//$('#load_cart').load('UserCart.php');
@@ -1981,7 +1896,6 @@ function OpenCartDiv()
         scrollTop: $('#load_page_div').offset().top},
         'slow');
 }
-
 function GetUserCartItems($userid)
 {
 	var cartitemresult = 0;
@@ -1997,8 +1911,6 @@ function GetUserCartItems($userid)
 			}
 		});
 }
-
-
 function CheckForPass($userid, $pwd)
 {
 	$.ajax({ url: 'api.php',
@@ -2019,7 +1931,6 @@ function CheckForPass($userid, $pwd)
 			}
 		});
 }
-
 function UpdateResetRecord($ps_reset)
 {
 	ShowLoader();
@@ -2043,7 +1954,6 @@ function UpdateResetRecord($ps_reset)
 	}
 	HideLoader();
 }
-
 function HideShowPw()
 {
 	$("#hsps").click(function () {
@@ -2089,7 +1999,6 @@ function HideShowPw()
 	 
 	 });
 }
-
 function UpdateUserSelection($col_name, $col_val)
 {
 	$userid = $('#profile_userdiv').html();
@@ -2103,11 +2012,9 @@ function UpdateUserSelection($col_name, $col_val)
 				}
 			});
 }
-
 $(function() {
     $('#notif_info').change(function() {
       var rn = $(this).prop('checked');
-
 		if(rn==false)
 		{
 			$('#notif_div').hide();
@@ -2138,7 +2045,6 @@ $(function() {
   $(function() {
     $('#deal_info').change(function() {
       var rn = $(this).prop('checked');
-
 		if(rn==false)
 		{
 			$('#ongoing_deals').hide();
@@ -2202,7 +2108,6 @@ $(function() {
 								var temp=[];
 								temp.push(res[i]["Month"]);
 								temp.push(parseInt(res[i]["Expenditure"]));
-
 								monthly_exp.push(temp);
 							 }
 						 }
@@ -2221,7 +2126,6 @@ $(function() {
   {
 	  google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
-
       function drawChart() {
         var data = google.visualization.arrayToDataTable($data1);
           /*['Year', 'Expenses'],
@@ -2243,7 +2147,6 @@ $(function() {
 			  
 		  
         ]);*/
-
         var options = {
           chart: {
             title: 'My Monthly Expenditure',
@@ -2255,20 +2158,15 @@ $(function() {
           height: 400,
           colors: ['#1b9e77', '#d95f02', '#7570b3']
         };
-
         var chart = new google.charts.Bar(document.getElementById('chart_div'));
 		
 		ShowChartLoader();
 				google.visualization.events.addListener(chart, 'ready', function() {
 						HideChartLoader();
 				});
-
         chart.draw(data, google.charts.Bar.convertOptions(options));
-
         var btns = document.getElementById('btn-group');
-
         /*btns.onclick = function (e) {
-
           if (e.target.tagName === 'BUTTON') {
             options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
             chart.draw(data, google.charts.Bar.convertOptions(options));
@@ -2334,7 +2232,6 @@ $(function() {
 								var temp=[];
 								temp.push(res[i]["Item"] + " (Quantiy: " + res[i]["TotalItems"] + ")");
 								temp.push(parseInt(res[i]["Price"]));
-
 								monthly_exp.push(temp);
 							 }
 						 }
@@ -2343,7 +2240,6 @@ $(function() {
 						  google.charts.load("current", {packages:["corechart"]});
 						  google.charts.setOnLoadCallback(drawChart);
 						  
-
 						  function drawChart() {
 							var data = google.visualization.arrayToDataTable(monthly_exp);
 							  
@@ -2354,17 +2250,14 @@ $(function() {
 							  pieHole: 0.4,
 							  pieSliceText: 'value'
 							};
-
 							var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
 							
 							ShowChartLoader();
 							google.visualization.events.addListener(chart, 'ready', function() {
 									HideChartLoader();
 						    });
-
 							//chart.draw(data, google.charts.Bar.convertOptions(options));
 							chart.draw(data, options);
-
 							var btns = document.getElementById('btn-group');
 							
 						  }
@@ -2395,7 +2288,6 @@ function LogOutUser()
 			}
 		});
 }
-
 function ShowMyRatings()
 {
 	ShowLoader();
@@ -2421,7 +2313,6 @@ function ShowMyRatings()
 		});
 		HideLoader();
 }
-
 function FavouritesOnClick()
 {
 	GetDetails('my_fav');
@@ -2431,8 +2322,6 @@ function FavouritesOnClick()
 	$('#rowaddresses').hide(); 
 	$('#add_division').hide();
 }
-
-
 function GetCustomersOrders()
 {
 	ShowLoader();
@@ -2546,11 +2435,7 @@ function GetCustomersOrders()
 		})
 		HideLoader();
 }
-
-
 <!-- search for the customer orders -->
-
-
 function GetCustomersOrdersBySearch()
 {
 	ShowLoader();
@@ -2665,8 +2550,6 @@ function GetCustomersOrdersBySearch()
 		})
 		HideLoader();
 }
-
-
 <!-- End of search  ->
 function GetCustomersRecentOrders($order_id)
 {
@@ -2749,9 +2632,6 @@ function GetCustomersRecentOrders($order_id)
 		});
 		HideLoader();
 }
-
-
-
 function Reorder($orderId)
 {
 	$userid = $('#profile_userdiv').html();
@@ -2771,8 +2651,6 @@ function Reorder($orderId)
 				}
 			});
 }
-
-
 function GetUserFavs()
 {
 	ShowLoader();
@@ -2809,7 +2687,7 @@ function GetUserFavs()
 					 res[i]['ItemsQty'] = 0;
 				 }
 				 //var firstChar = res[i]["ItemDesc"].substr(0, 1).toLowerCase();
-				  html_val = html_val + "<div class='row' style='border: 1px solid; border-radius: 5px;'><div class='panel panel-primary' style='border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;'><div class='panel-heading'><span id=" + rotiid + ">" + res[i]['Items_Desc'] + "</span><div style='display:none'; id=" + each_items_val + ">" + each_it_val + "</div><div style='display:none'; id=" + total_items_val + ">" + tot_it_val + "</div><div style='display:none'; id=" + this_items_id + ">" + this_item_id + "</div><div style='display:none'; id=" + this_items_desc + ">" + this_item_desc + "</div><div style='display:none'; id=" + this_items_image + ">" + this_item_image + "</div><div><i style='cursor: pointer; text-shadow: 4px 4px 6px #777; margin-top: -17px;' title='Add Item' class='pull-right fa fa-plus-square' id=" + add_item + " onclick='AddItemToUserCart(" + '"' + noofItemsid + '"' + "," + '"' + this_items_id + '"' + "," + '"' + this_items_desc + '"' + "," + '"' + total_items_val + '"' + "," + '"' + this_items_image + '"' + "," + '"' + each_items_val + '"' + ")" + "'" + "></i><span id=" + noofItemsid + " class = 'pull-right' style='width: 40px; margin-top: -21px; text-align: center; margin-right: 15px;'>" + res[i]['ItemsQty'] + "</span><i style='cursor: pointer; text-shadow: 4px 4px 6px #777; margin-top: -17px;' title='Remove Item' class='pull-right fa fa-minus-square' id=" + remove_item + " onclick='RemoveItemFromUserCart(" + '"' + noofItemsid + '"' + "," + '"' + this_items_id + '"' + "," + '"' + this_items_desc + '"' + "," + '"' + total_items_val + '"' + "," + '"' + this_items_image + '"' + "," + '"' + each_items_val + '"' + ")" + "'" + "></i></div></div><div class='col-xs-6 pull-left panel-body' id=" + itemimagerating + "><img class='img-responsive' src='" + res[i]['Items_Img'] + "'></img></div><div style='padding-top:14%; padding-left: 30%;' class='col-xs-6 pull-right' id=" + itemrating + "><i  style='cursor: pointer; color:red; text-shadow: 4px 4px 6px #777;' title='Remove from favourites' class='fa fa-heart faa-pulse animated fa-2x' id=" + sel_user_fav + " onclick='StoreUserFavs(" + '"' + this_items_id + '"' + "," + '"' + each_items_val + '"' + "," + '"' + this_items_desc + '"' + "," + '"' + this_items_image + '"' + ")" + "'" + "></i></div></div></div><br></br>";
+				  html_val = html_val + "<div class='row user_fav_animation' style='border: 1px solid; border-radius: 5px;'><div class='panel panel-primary' style='border-bottom-left-radius: 0px; border-bottom-right-radius: 0px;'><div class='panel-heading'><span id=" + rotiid + ">" + res[i]['Items_Desc'] + "</span><div style='display:none'; id=" + each_items_val + ">" + each_it_val + "</div><div style='display:none'; id=" + total_items_val + ">" + tot_it_val + "</div><div style='display:none'; id=" + this_items_id + ">" + this_item_id + "</div><div style='display:none'; id=" + this_items_desc + ">" + this_item_desc + "</div><div style='display:none'; id=" + this_items_image + ">" + this_item_image + "</div><div><i style='cursor: pointer; text-shadow: 4px 4px 6px #777; margin-top: -17px;' title='Add Item' class='pull-right fa fa-plus-square' id=" + add_item + " onclick='AddItemToUserCart(" + '"' + noofItemsid + '"' + "," + '"' + this_items_id + '"' + "," + '"' + this_items_desc + '"' + "," + '"' + total_items_val + '"' + "," + '"' + this_items_image + '"' + "," + '"' + each_items_val + '"' + ")" + "'" + "></i><span id=" + noofItemsid + " class = 'pull-right' style='width: 40px; margin-top: -21px; text-align: center; margin-right: 15px;'>" + res[i]['ItemsQty'] + "</span><i style='cursor: pointer; text-shadow: 4px 4px 6px #777; margin-top: -17px;' title='Remove Item' class='pull-right fa fa-minus-square' id=" + remove_item + " onclick='RemoveItemFromUserCart(" + '"' + noofItemsid + '"' + "," + '"' + this_items_id + '"' + "," + '"' + this_items_desc + '"' + "," + '"' + total_items_val + '"' + "," + '"' + this_items_image + '"' + "," + '"' + each_items_val + '"' + ")" + "'" + "></i></div></div><div class='col-xs-6 pull-left panel-body' id=" + itemimagerating + "><img class='img-responsive' src='" + res[i]['Items_Img'] + "'></img></div><div style='padding-top:14%; padding-left: 30%;' class='col-xs-6 pull-right' id=" + itemrating + "><i  style='cursor: pointer; color:red; text-shadow: 4px 4px 6px #777;' title='Remove from favourites' class='fa fa-heart faa-pulse animated fa-2x' id=" + sel_user_fav + " onclick='StoreUserFavs(" + '"' + this_items_id + '"' + "," + '"' + each_items_val + '"' + "," + '"' + this_items_desc + '"' + "," + '"' + this_items_image + '"' + ")" + "'" + "></i></div></div></div><br></br>";
 			 }
 			 $('#user_row_favs').html(html_val);
 			 FavouritesOnClick();
@@ -2817,9 +2695,7 @@ function GetUserFavs()
 		});
 		HideLoader();
 }
-
 //data: {function2call: 'StoreUserFavs', userid: $userid, itemid: $('#' + $itemid).html(), it_val: $('#' + $each_items_val).html(), itemdescription: $('#' + $itemdescription).html(), itemimage: $('#' + $itemimage).html()},
-
 function AddItemToUserCart($cart_item_count, $the_item_id, $the_item_desc, $total_items_val, $the_item_image, $each_items_val)
 {
 	$item_count_usercart = $('#' + $cart_item_count).html();
@@ -2845,8 +2721,6 @@ function AddItemToUserCart($cart_item_count, $the_item_id, $the_item_desc, $tota
 			}
 		});
 }
-
-
 function RemoveItemFromUserCart($cart_item_count, $the_item_id, $the_item_desc, $total_items_val, $the_item_image, $each_items_val)
 {
 	$item_count_usercart = $('#' + $cart_item_count).html();
@@ -2882,12 +2756,10 @@ function RemoveItemFromUserCart($cart_item_count, $the_item_id, $the_item_desc, 
 			}
 		});
 }
-
 function ChangeColor($id, $colr)
 {
 	$('#' + $id).css('color' , $colr);
 }
-
 function StoreUserFavs($itemid, $it_val, $itemdescription, $itemimage)
 {
 	ShowLoader();
@@ -2910,8 +2782,6 @@ function StoreUserFavs($itemid, $it_val, $itemdescription, $itemimage)
 		});
 		HideLoader();
 }
-
-
 function ShowMyReviews()
 {
 	ShowLoader();
@@ -2942,7 +2812,6 @@ function ShowMyReviews()
 		});
 		HideLoader();
 }
-
 function EnableReview(label, ricon, txtarea, sicon, cicon)
 {
 	$('#' + txtarea).val($('#' + label).html());
@@ -2952,7 +2821,6 @@ function EnableReview(label, ricon, txtarea, sicon, cicon)
 	$('#' + sicon).show();
 	$('#' + cicon).show();
 }
-
 function CancelUpdateReview($label, $ricon, $txtare, $sicon, $cicon)
 {
 	$('#' + $label).show();
@@ -2961,7 +2829,6 @@ function CancelUpdateReview($label, $ricon, $txtare, $sicon, $cicon)
 	$('#' + $sicon).hide();
 	$('#' + $cicon).hide();
 }
-
 function SaveReview($label, $ricon, $txtare, $sicon, $itdesc, $cicon)
 {
 	ShowLoader();
@@ -2991,10 +2858,6 @@ function SaveReview($label, $ricon, $txtare, $sicon, $itdesc, $cicon)
 		});
 		HideLoader();
 }
-
-
-
-
 function UserReviews($itdesc, $idvl)
 {
 	ShowLoader();
@@ -3015,8 +2878,6 @@ function UserReviews($itdesc, $idvl)
 		});
 		HideLoader();
 }
-
-
 function GetUserReviews()
 {
 	//$clval = $idvl;
@@ -3039,12 +2900,10 @@ function GetUserReviews()
 		});
 		HideLoader();
 }
-
 function ChangeColor($id, $colr)
 {
 	$('#' + $id).css('color' , $colr);
 }
-
 function GetGeoPlaces()
 {
 	$zip_code = $('#area_zipcode').val();
@@ -3100,7 +2959,6 @@ function GetGeoPlaces()
 		$('#area_zipcode').focus();
 	}
 }
-
 function CallToAddCustAddress($action_val)
 {
 	//$('#cartitemcontainer').show();
@@ -3121,7 +2979,6 @@ function CallToAddCustAddress($action_val)
 	//$('#cartitemcontainer').hide();
 	HideLoader();
 }
-
 function StoreCustomerAddresses($userid, $addr1, $addr2, $city, $state, $country, $zipcode, $areadesc, $address_nickname, $action_val, $user_address_id)
 {
 	ShowLoader();
@@ -3146,7 +3003,6 @@ function StoreCustomerAddresses($userid, $addr1, $addr2, $city, $state, $country
 		});
 		HideLoader();
 }
-
 function PhoneNumberEdit()
 {
 	$('#edit_phone').show(); 
@@ -3155,7 +3011,6 @@ function PhoneNumberEdit()
 	$('#cancel_update').show();
 	$('#edit_ph_no').hide();
 }
-
 function PhoneNumberEditCancel()
 {
 	$('#edit_phone').hide(); 
@@ -3164,7 +3019,6 @@ function PhoneNumberEditCancel()
 	$('#cancel_update').hide();
 	$('#edit_ph_no').show();
 }
-
 function PhoneNumberUpdate()
 {
 	$phone_number = $('#edit_phone').val();
@@ -3195,9 +3049,6 @@ function PhoneNumberUpdate()
 			});
 	}
 }
-
-
-
 function EmailIdEdit()
 {
 	$('#edit_email').show(); 
@@ -3206,7 +3057,6 @@ function EmailIdEdit()
 	$('#cancel_update_email_id').show();
 	$('#edit_email_id').hide();
 }
-
 function EmailIdEditCancel()
 {
 	$('#edit_email').hide(); 
@@ -3215,8 +3065,6 @@ function EmailIdEditCancel()
 	$('#cancel_update_email_id').hide();
 	$('#edit_email_id').show();
 }
-
-
 function EmailIdUpdate()
 {
 	ShowProfileLoadingLoader();
@@ -3288,8 +3136,6 @@ function EmailIdUpdate()
 			});
 	}
 }
-
-
 function GetUserAddresses()
 {
 	ShowLoader();
@@ -3315,19 +3161,15 @@ function GetUserAddresses()
 		});
 		HideLoader();
 }
-
 function CreateBoxShadow($id)
 {
 	$('#' + $id).css('text-shadow', '4px 4px 6px #777');
 }
-
 function DestroyBoxShadow($id)
 {
 	$('#' + $id).css('text-shadow', '0px 0px 0px #ffffff');
 }
-
 //graph creation
-
 function DeleteUserAddress($addressid)
 {
 	//$('#cartitemcontainer').show();
@@ -3344,8 +3186,6 @@ function DeleteUserAddress($addressid)
 		});
 		HideLoader();
 }
-
-
 function EditUserAddress($addressid)
 {
 	ShowLoader();
@@ -3374,7 +3214,6 @@ function EditUserAddress($addressid)
 		});
 		HideLoader();
 }
-
 function EraseAllFields()
 {
 	 $('#addr1').val('');
@@ -3383,7 +3222,6 @@ function EraseAllFields()
 	 $('#areadesc').val('');
 	 $('#nickname').val('');
 }
-
 function AddressCancelClick()
 {
 	$('#midcontainerdiv').css('width', '100%'); 
@@ -3395,7 +3233,6 @@ function AddressCancelClick()
 	$('#area_div_select').hide(); 
 	EraseAllFields();
 }
-
 function AddressAddClick()
 {
 	ShowLoader();
@@ -3408,7 +3245,6 @@ function AddressAddClick()
 	$('#user_addrid').html('');
 	HideLoader();
 }
-
 function AddressSaveClick()
 {
 	ShowLoader();
@@ -3425,32 +3261,25 @@ function AddressSaveClick()
 	EraseAllFields();
 	HideLoader();
 }
-
 function order_search_box_show()
 {
 	$('#order_search_box').show();
 }
-
 function order_search_box_hide()
 {
 	$('#order_search_box').hide();
 }
-
 setInterval(function() {
     GetDealsInformation();
 	//LoadUserCart();
 	//GetUserFavs();
 }, 60 * 1000);
-
 setInterval(function() {
 	GetCustomerCareInfo();
 }, 40 * 1000);
-
 setInterval(function() {
 	GetNotifications();
 }, 20 * 1000);
-
-
 function GetDealsInformation()
 {
 	$.ajax({ url: 'api.php',
@@ -3482,10 +3311,9 @@ function GetDealsInformation()
 			}
 		});
 }
-
 function ContactCustomerService($orderid)
 {	
-	$('#contact_loader_div').css('height', $('#main_container_middle').outerHeight());
+	$('#contact_loader_div').css('height', $('#main_container_middle').outerHeight() + 1);
 	
 	$('#contact_loader_div').css('left', $('#main_container_middle').position().left);
 	
@@ -3498,13 +3326,10 @@ function ContactCustomerService($orderid)
 	
 	$('#contact_msg').html("<div>To get updates for your Order No: <strong>" + $orderid + "</strong> please contact our " + customer_care_name +  " @ " +customer_care_number + "</div><div style='padding-top: 40px;'><input type='button' value='OK' onclick='HideContactDiv()';></input></div>");
 }
-
 function HideContactDiv()
 {
 	$('#contact_loader_div').hide('slide', 500);
 }
-
-
 function TrackOrder($order_id, $id)
 {
 	$userid = $('#profile_userdiv').html();
@@ -3515,7 +3340,7 @@ function TrackOrder($order_id, $id)
          success: function(output) {
 			 var res = jQuery.parseJSON(output);
 			 
-				$('#contact_loader_div').css('height', $('#main_container_middle').height());
+				$('#contact_loader_div').css('height', $('#main_container_middle').height() + 1);
 	
 				$('#contact_loader_div').css('left', $('#main_container_middle').position().left);
 				
@@ -3533,15 +3358,12 @@ function TrackOrder($order_id, $id)
 			}
 		});
 }
-
 function HideTrackOrderDiv()
 {
 	$('#contact_loader_div').hide('clip', 500);
 	$('#contact_msg_btn').hide();
 	//$('#div_contact_img').hide();
 }
-
-
 function GetCustomersAllOrders()
 {
 	//ShowLoader();
@@ -3637,8 +3459,6 @@ function GetCustomersAllOrders()
 		})
 		//HideLoader();
 }
-
-
 function GetCustomersSearchedOrders($order_val)
 {
 	//ShowLoader();
@@ -3734,26 +3554,21 @@ function GetCustomersSearchedOrders($order_val)
 		})
 		//HideLoader();
 }
-
-
 function ShowAllCustomerOrders()
 {
 	GetCustomersAllOrders();
 	$('#cartitemcontainer').show('fold', 500);
 }
-
 function ShowAllCustomerSearchedOrders($order_val)
 {
 	GetCustomersSearchedOrders($order_val);
 	$('#cartitemcontainer').show('fold', 500);
 }
-
 function CloseAllOrders()
 {
 	$('#cartitemcontainer').hide('clip', 500);
 	$('#auto_comp_text').html('');
 }
-
 function Contact_CustomerService($orderid, e)
 {
 	var customer_care_name = $('#customercarename').html();
@@ -3765,7 +3580,6 @@ function Contact_CustomerService($orderid, e)
 	
 	$('#order_contact_care').show();
 }
-
 function Track_Order($order_id, $id, e)
 {
 	$userid = $('#profile_userdiv').html();
@@ -3788,13 +3602,10 @@ function Track_Order($order_id, $id, e)
 			}
 		});
 }
-
 $(document).click(function() {
     //$('#order_status_box').hide();
 	//$('#order_contact_care').hide();
 });
-
-
 function GetUserCartItemsDetails()
 {
 	$userid = $('#profile_userdiv').html();
@@ -3815,7 +3626,6 @@ function GetUserCartItemsDetails()
 							});
 							//alert(totalRoomPrices);
 							
-
 						  for ($i=0; $i<res.length; $i++)
 						  {
 								carthtml = carthtml + "<tr id="+ "'" + res[$i]["ItemsId"] + "'" + "><td data-th='Product'><div class='row'><div class='col-sm-2 hidden-xs'><img src=" + "'" + res[$i]["ItemsImage"] + "'" + " alt='...' class='img-responsive' style='margin-top: 13px;'/></div><div class='col-sm-10'><h4 class='nomargin'>" + res[$i]["ItemDsc"] + "</h4></div></div></td><td data-th='Price'></td><td data-th='Quantity' style='text-align:center; width: 20%;'><div class='col-xs-3' title = 'Need less' id='remove_roti" + $i + "' style='cursor: pointer; display: flex;justify-content: center;' onclick='RemoveItemsFromUserCart(" + '"' + res[$i]["ItemsId"] + '"' +  ',' + '"' + res[$i]["ItemsQty"] + '"' + ")" + "'" + "><i style='margin-top: 3px; cursor: pointer; text-shadow: 4px 4px 6px #777;' title='Remove Item' class='fa fa-minus-square'></i></div>&nbsp;"+ res[$i]["ItemsQty"] + "<div class='col-xs-3 pull-right' id='add_roti" + $i + "' style='cursor: pointer; display: flex;justify-content: center;' title = 'Need more' onclick='AddItemsToUserCart(" + '"' + res[$i]["ItemsId"] + '"' + ',' + '"' + res[$i]["ItemsQty"] + '"' + ")" + "'" + "><i style='margin-top: 3px; cursor: pointer; text-shadow: 4px 4px 6px #777;' title='Add Item' class='fa fa-plus-square'></i></div></td><td data-th='Subtotal' class='text-center'>Rs. " + res[$i]["ItemsValue"] + "</td><td class='actions' data-th=''><button title='Remove item from cart' class='btn btn-danger btn-sm' onclick='DeleteItem(" + '"' + res[$i]["ItemsId"] + '"' + ")" + "'" + "><i class='fa fa-trash-o'></i></button></td></tr>";
@@ -3844,7 +3654,6 @@ function CloseCartDiv()
 	$("#load_page_div").hide('fade', 1500); 
 }
   
-
 function DeleteItem($itemid)
 {
 	$.ajax({ url: 'api.php',
@@ -3862,7 +3671,6 @@ function DeleteItem($itemid)
 			}
 		});
 }
-
 function AddItemsToUserCart($itemid, $itemqty)
 {
 	$.ajax({ url: 'api.php',
@@ -3900,7 +3708,6 @@ function AddItemsToUserCart($itemid, $itemqty)
 								}
 							});
 }
-
 function RemoveItemsFromUserCart($itemid, $itemqty)
 {
 	$.ajax({ url: 'api.php',
@@ -3940,8 +3747,6 @@ function RemoveItemsFromUserCart($itemid, $itemqty)
 	
 	
 }
-
-
 function GetCustomerCareInfo()
 {
 	$.ajax({ url: 'api.php',
@@ -3961,7 +3766,6 @@ function GetCustomerCareInfo()
 			}
 		});
 }
-
 function GetNotifications()
 {
 	var html = "";
@@ -3997,6 +3801,127 @@ function GetNotifications()
 		});
 }
 
+function IfSettingsDivVisible()
+{
+	/*if($('#settings_div').visible( false ))
+	{
+		$('#settings_div').hide();
+	}*/
+	/*var div_visible = $('#settings_div').visible(true);
+	
+	if(div_visible == true)
+	{
+		$('#settings_div').addClass("come-in");
+		$('#settings_div').show();
+	}
+	else
+	{
+		$('#settings_div').hide();
+	}*/
+}
+
+
+$.fn.isOnScreen = function(partial){
+
+    //let's be sure we're checking only one element (in case function is called on set)
+    var t = $(this).first();
+
+    //we're using getBoundingClientRect to get position of element relative to viewport
+    //so we dont need to care about scroll position
+    var box = t[0].getBoundingClientRect();
+
+    //let's save window size
+    var win = {
+        h : $(window).height(),
+        w : $(window).width()
+    };
+
+    //now we check against edges of element
+
+    //firstly we check one axis
+    //for example we check if left edge of element is between left and right edge of scree (still might be above/below)
+    var topEdgeInRange = box.top >= 0 && box.top <= win.h;
+    var bottomEdgeInRange = box.bottom >= 0 && box.bottom <= win.h;
+
+    var leftEdgeInRange = box.left >= 0 && box.left <= win.w;
+    var rightEdgeInRange = box.right >= 0 && box.right <= win.w;
+
+
+    //here we check if element is bigger then window and 'covers' the screen in given axis
+    var coverScreenHorizontally = box.left <= 0 && box.right >= win.w;
+    var coverScreenVertically = box.top <= 0 && box.bottom >= win.h;
+
+    //now we check 2nd axis
+    var topEdgeInScreen = topEdgeInRange && ( leftEdgeInRange || rightEdgeInRange || coverScreenHorizontally );
+    var bottomEdgeInScreen = bottomEdgeInRange && ( leftEdgeInRange || rightEdgeInRange || coverScreenHorizontally );
+
+    var leftEdgeInScreen = leftEdgeInRange && ( topEdgeInRange || bottomEdgeInRange || coverScreenVertically );
+    var rightEdgeInScreen = rightEdgeInRange && ( topEdgeInRange || bottomEdgeInRange || coverScreenVertically );
+
+    //now knowing presence of each edge on screen, we check if element is partially or entirely present on screen
+    var isPartiallyOnScreen = topEdgeInScreen || bottomEdgeInScreen || leftEdgeInScreen || rightEdgeInScreen;
+    var isEntirelyOnScreen = topEdgeInScreen && bottomEdgeInScreen && leftEdgeInScreen && rightEdgeInScreen;
+
+    return partial ? isPartiallyOnScreen : isEntirelyOnScreen;
+
+};
+
+$.expr.filters.onscreen = function(elem) {
+  return $(elem).isOnScreen(true);
+};
+
+$.expr.filters.entireonscreen = function(elem) {
+  return $(elem).isOnScreen(true);
+};
+
+/*
+Usage:
+
+$(".some-element").filter(":onscreen").doSomething();
+$(".some-element").filter(":entireonscreen").doSomething();
+$(".some-element").isOnScreen(); // true / false
+$(".some-element").isOnScreen(true); // true / false (partially on screen)
+$(".some-element").is(":onscreen"); // true / false (partially on screen)
+$(".some-element").is(":entireonscreen"); // true / false 
+*/
+function CheckSettingsDivVisibility()
+{
+	var divId = $("#complaint_box").isOnScreen(true);
+	var rcdivId = $("#recent_orders_div").isOnScreen(true);
+	if(divId == true)
+	{
+		$('#complaint_box').addClass("come-in");
+		$('#complaint_box').show();
+	}
+	
+	if(rcdivId == true)
+	{
+		$('#recent_orders_div').addClass("come-in");
+		$('#recent_orders_div').show();
+	}
+}
+
+$(window).load(function() {
+    //CheckSettingsDivVisibility();
+});
+
+$(window).on("scroll", function () {
+  /*mods.each(function () {
+    $(this).toggleClass("come-in", $(this).visible(true));
+  });*/
+  //IfSettingsDivVisible();
+  CheckSettingsDivVisibility();
+  
+  
+  $(".user_fav_animation").each(function(i, el) {
+    var el = $(el);
+    if (el.visible(true)) {
+      el.addClass("come-in");
+    }
+	//el.show();
+  });
+  
+});
 /*$('#close_all_orders').on('click', function() {
    $('#cartitemcontainer').hide('slide', 500);
 });*/
@@ -4006,12 +3931,12 @@ function GetNotifications()
 	<div id="cartitemsdiv" style="width: 80%;/* height: auto; */color: beige;/* position: absolute; */padding: 10px;margin-top: 5%;margin-left: 10%;background-color: rgba(117, 110, 110, 0);/* height: 500px; */max-height: 500px;overflow-x: hidden;box-shadow: 3px 4px 4px 1px #3e3939;border-radius: 5px; border: 1px solid;"></div>
 </div>
 
-<div class="box_status" id="order_status_box" style="display: none;">
+<div class="box_status" id="order_status_box" style="display: none; border-radius: 5px;">
   <span id="order_status_box_span"></span>
   <div style="cursor: pointer; text-align:center; margin-top:60px;"><i  style="color: rgba(243, 8, 8, 0.72); text-shadow: 1px 1px 0px #3a3030;" title="Close" class='fa fa-window-close' id='close_track_window' onclick="$('#order_status_box').hide();"></i></div>
 </div>
 
-<div class="box_status" id="order_contact_care" style="display: none;">
+<div class="box_status" id="order_contact_care" style="display: none; border-radius: 5px;">
   <span id="order_contact_care_span"></span>  
   <div style="cursor: pointer; text-align:center; margin-top:20px;"><i style="color: rgba(243, 8, 8, 0.72); text-shadow: 1px 1px 0px #3a3030;" title="Close" class='fa fa-window-close' id='close_contact_window' onclick="$('#order_contact_care').hide();"></i></div>
 </div>
