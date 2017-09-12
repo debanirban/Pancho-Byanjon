@@ -18,6 +18,10 @@ if(!isset($_SESSION['user_name']) && empty($_SESSION['user_name']))
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="font-awesome-animation.css">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <style>
     /* Remove the navbar's default rounded borders and increase the bottom margin */ 
     .navbar {
@@ -140,6 +144,35 @@ if(!isset($_SESSION['user_name']) && empty($_SESSION['user_name']))
     position:relative;
     top:2px;
     left:2px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 4px;
+}
+ 
+::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    background: #6d6d6d; 
+}
+
+.come-in {
+  transform: rotate(360deg);
+  animation: come-in 0.8s ease forwards;
+}
+.come-in:nth-child(odd) {
+  animation-duration: 0.6s; /* So they look staggered */
+}
+
+@keyframes come-in {
+  to { transform: rotate(0deg); }
 }
   
   </style>
@@ -748,6 +781,7 @@ function AssignItemIds($div_id, $desc, $assigned_id)
 $(document).ready(function(){
 	GetUserCartItems($('#profile_userdiv').html());
 	GetUserCartAllItems($('#profile_userdiv').html());
+	GetUserWelcomeText();
 	
     //$cartcount = $("#itemCount").html();
 	//var ccount = parseInt($cartcount.trim());
@@ -856,14 +890,14 @@ function ShowUserCart()
 	var ccount = parseInt($cartcount.trim());
 	
 	$("#cartitemsdiv").load('UserCart.php');
-	$("#cartitemcontainer").show();
+	$("#cartitemcontainer").show('fold', 1000);
 		
 }
 
 function CloseCartDiv()
 {
 	//alert('Hi');
-	$("#cartitemcontainer").hide();
+	$("#cartitemcontainer").hide('clip', 1500);
 }
 
 function LogInUser()
@@ -993,6 +1027,130 @@ function GetUserFavs()
 			}
 		});
 }
+
+function GetUserWelcomeText()
+{
+	//$userid = $('#profile_userdiv').html();
+	$.ajax({ url: 'api.php',
+         data: {function2call: 'GetUserWelcomeText'},
+         type: 'post',
+		 //dataType: 'json',
+         success: function(output) {
+			 var res = jQuery.parseJSON(output);
+			 $('#welcometext').html(res[0]["WelcomeWord"]);
+			 if(res[0]["WordPronounciation"] == "" || res[0]["WordPronounciation"] == null)
+			 {
+				$('#userwelcome').attr('title', 'Now you know how to welcome someone in ' + res[0]["WelcomeLanguage"]);
+			 }
+			 else
+			 {
+				 $('#userwelcome').attr('title', 'Now you know how to welcome someone in ' + res[0]["WelcomeLanguage"] + '\n It is pronounced as ' + res[0]["WordPronounciation"]);
+			 }
+			}
+		});
+}
+
+
+$.fn.isOnScreen = function(partial){
+
+    //let's be sure we're checking only one element (in case function is called on set)
+    var t = $(this).first();
+
+    //we're using getBoundingClientRect to get position of element relative to viewport
+    //so we dont need to care about scroll position
+    var box = t[0].getBoundingClientRect();
+
+    //let's save window size
+    var win = {
+        h : $(window).height(),
+        w : $(window).width()
+    };
+
+    //now we check against edges of element
+
+    //firstly we check one axis
+    //for example we check if left edge of element is between left and right edge of scree (still might be above/below)
+    var topEdgeInRange = box.top >= 0 && box.top <= win.h;
+    var bottomEdgeInRange = box.bottom >= 0 && box.bottom <= win.h;
+
+    var leftEdgeInRange = box.left >= 0 && box.left <= win.w;
+    var rightEdgeInRange = box.right >= 0 && box.right <= win.w;
+
+
+    //here we check if element is bigger then window and 'covers' the screen in given axis
+    var coverScreenHorizontally = box.left <= 0 && box.right >= win.w;
+    var coverScreenVertically = box.top <= 0 && box.bottom >= win.h;
+
+    //now we check 2nd axis
+    var topEdgeInScreen = topEdgeInRange && ( leftEdgeInRange || rightEdgeInRange || coverScreenHorizontally );
+    var bottomEdgeInScreen = bottomEdgeInRange && ( leftEdgeInRange || rightEdgeInRange || coverScreenHorizontally );
+
+    var leftEdgeInScreen = leftEdgeInRange && ( topEdgeInRange || bottomEdgeInRange || coverScreenVertically );
+    var rightEdgeInScreen = rightEdgeInRange && ( topEdgeInRange || bottomEdgeInRange || coverScreenVertically );
+
+    //now knowing presence of each edge on screen, we check if element is partially or entirely present on screen
+    var isPartiallyOnScreen = topEdgeInScreen || bottomEdgeInScreen || leftEdgeInScreen || rightEdgeInScreen;
+    var isEntirelyOnScreen = topEdgeInScreen && bottomEdgeInScreen && leftEdgeInScreen && rightEdgeInScreen;
+
+    return partial ? isPartiallyOnScreen : isEntirelyOnScreen;
+
+};
+
+$.expr.filters.onscreen = function(elem) {
+  return $(elem).isOnScreen(true);
+};
+
+$.expr.filters.entireonscreen = function(elem) {
+  return $(elem).isOnScreen(true);
+};
+
+/*
+Usage:
+
+$(".some-element").filter(":onscreen").doSomething();
+$(".some-element").filter(":entireonscreen").doSomething();
+$(".some-element").isOnScreen(); // true / false
+$(".some-element").isOnScreen(true); // true / false (partially on screen)
+$(".some-element").is(":onscreen"); // true / false (partially on screen)
+$(".some-element").is(":entireonscreen"); // true / false 
+*/
+
+function CheckSettingsDivVisibility()
+{
+	var tarka_item_div = $("#tarka_item_div").isOnScreen(true);
+	var pbm_item_div = $("#pbm_item_div").isOnScreen(true);
+	var cknks_item_div = $("#cknks_item_div").isOnScreen(true);
+	
+	if(tarka_item_div == true)
+	{
+		$('#tarka_item_div').addClass("come-in");
+		$('#tarka_item_div').show();
+	}
+	
+	if(pbm_item_div == true)
+	{
+		$('#pbm_item_div').addClass("come-in");
+		$('#pbm_item_div').show();
+	}
+	
+	if(cknks_item_div == true)
+	{
+		$('#cknks_item_div').addClass("come-in");
+		$('#cknks_item_div').show();
+	}
+}
+
+$(window).load(function() {
+    //CheckSettingsDivVisibility();
+});
+
+$(window).on("scroll", function () {
+  /*mods.each(function () {
+    $(this).toggleClass("come-in", $(this).visible(true));
+  });*/
+  //IfSettingsDivVisible();
+  CheckSettingsDivVisibility();
+});
 </script>
 </head>
 <body>
@@ -1041,7 +1199,7 @@ function GetUserFavs()
 		<li class="dropdown">
           <a href="#" id="accountdropdown" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span> Your Account</a>
           <ul class="dropdown-menu" role="menu">
-			<li><a href="#" style="" id="userwelcome"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;Welcome <?php echo $_SESSION['user_fname'];?></a></li>
+			<li><a href="#" style="" id="userwelcome"><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="welcometext">Welcome</span> <?php echo $_SESSION['user_fname'];?></a></li>
 			<li class="divider" style=""></li>
             <li><a href="UserProfile" style=""><span class="glyphicon glyphicon-th-list"></span>&nbsp;&nbsp;&nbsp;&nbsp;Profile</a></li>
             <li><a href="#" style=""><span class="glyphicon glyphicon-tags"></span>&nbsp;&nbsp;&nbsp;&nbsp;My Orders</a></li>
@@ -1180,7 +1338,7 @@ function GetUserFavs()
 
 <div class="container">    
   <div class="row">
-    <div class="col-sm-4">
+    <div class="col-sm-4" id="tarka_item_div"  style="display:none;">
       <div class="panel panel-primary">
         <div class="panel-heading"><span id="tarkaid">Tarka</span>
 		<span style="width: 60%; position: absolute; text-align: center;"><i style="cursor: pointer; text-shadow: 4px 4px 6px #777;" title="Mark as favourite" class="fa fa-heart faa-pulse animated" id="tarka_fav" onclick="StoreUserFavs($('#tarka_val_id').html(), 'tarka_fav', 'red', $('#tarka_each_val_id').html(), $('#tarka_desc').html(), $('#tarka_img').html());"></i></span>
@@ -1203,7 +1361,7 @@ function GetUserFavs()
 		</div>
       </div>
     </div>
-    <div class="col-sm-4"> 
+    <div class="col-sm-4" id="cknks_item_div" style="display:none;"> 
       <!--<div class="panel panel-success">-->
 	  <div class="panel panel-primary">
         <div class="panel-heading"><span id="chickenid">Chicken Kasa</span>
@@ -1227,7 +1385,7 @@ function GetUserFavs()
 		</div>
       </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4" id="pbm_item_div" style="display:none;">
       <div class="panel panel-primary">
         <div class="panel-heading"><span id="paneerid">Paneer Butter Masala</span>
 		<span style="width: 30%; position: absolute; text-align: center;"><i style="cursor: pointer; text-shadow: 4px 4px 6px #777;" title="Mark as favourite" class="fa fa-heart faa-pulse animated" id="paneer_fav" onclick="StoreUserFavs($('#paneer_val_id').html(), 'paneer_fav', 'red', $('#paneer_each_val_id').html(), $('#paneer_desc').html(), $('#paneer_img').html());"></i></span>
@@ -1263,7 +1421,8 @@ function GetUserFavs()
 <!-- Create the Cart Div -->
 
   <div class='overlay' style="display:none;" id="cartitemcontainer">
-	<span id="cartitemsdiv" style="width: auto;height: auto;margin-top: 50%;margin: 0 auto;color: beige;position: relative;padding: 10px;top: 50%;"></span>
+	<span id="cartitemsdiv" style="width: auto;height: auto;margin-top: 50%;margin: 0 auto;color: beige;position: relative;padding: 10px;top: 50%;">
+	</span>
   </div>
  <div id="profile_userdiv" style="display:none;"><?php echo $_SESSION["user_name"];?></div>
 <!-- End of Card Div creation -->
